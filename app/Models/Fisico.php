@@ -24,6 +24,10 @@ class Fisico extends Model
         'usuario_id'
     ];
 
+    protected $casts = [
+        'data_nascimento' => 'date'
+    ];
+
     public function usuario(){
         return $this->belongsTo(User::class, 'usuario_id', 'id');
     }

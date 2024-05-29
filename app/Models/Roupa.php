@@ -24,6 +24,10 @@ class Roupa extends Model
         'juridico_id'
     ];
 
+    protected $casts = [
+        'preco' => 'decimal:2'
+    ];
+
     public function juridico(){
         return $this->belongsTo(Juridico::class, 'juridico_id', 'id');
     }

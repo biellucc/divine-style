@@ -23,6 +23,10 @@ class Cartao extends Model
         'fisico_id'
     ];
 
+    protected $casts = [
+        'validade' => 'date'
+    ];
+
     public function fisico(){
         return $this->belongsTo(Fisico::class, 'fisico_id', 'id');
     }
