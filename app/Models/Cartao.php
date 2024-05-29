@@ -11,4 +11,20 @@ class Cartao extends Model
 
     protected $table = 'cartao';
 
+    protected $fillable = [
+        'cvc',
+        'numero',
+        'validade',
+        'tipo',
+        'fisico_id'
+    ];
+
+    protected $hidden = [
+        'fisico_id'
+    ];
+
+    public function fisico(){
+        return $this->belongsTo(Fisico::class, 'fisico_id', 'id');
+    }
+
 }

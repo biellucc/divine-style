@@ -11,4 +11,23 @@ class Endereco extends Model
 
     protected $table = 'endereco';
 
+    protected $fillable = [
+        'cep',
+        'pais',
+        'estado',
+        'cidade',
+        'bairro',
+        'endereco',
+        'logradouro',
+        'usuario_id'
+    ];
+
+    protected $hidden = [
+        'usuario_id'
+    ];
+
+    public function user(){
+        return $this->belongsTo(User::class, 'usuario_id', 'id');
+    }
+
 }

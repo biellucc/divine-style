@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'telefone'
     ];
 
     /**
@@ -41,4 +42,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function fisico(){
+       return $this->hasOne(Fisico::class, 'usuario_id', 'id');
+    }
+
+    public function juridico(){
+        return $this->hasOne(Juridico::class, 'usuario_id', 'id');
+    }
+
+    public function endereco(){
+        return $this->hasOne(Endereco::class, 'usuario_id', 'id');
+    }
 }

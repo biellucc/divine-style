@@ -10,4 +10,25 @@ class Fisico extends Model
     use HasFactory;
 
     protected $table = 'fisico';
+
+    protected $fillable = [
+        'nome',
+        'sobrenome',
+        'cpf',
+        'genero',
+        'data_nascimento',
+        'usuario_id'
+    ];
+
+    protected $hidden = [
+        'usuario_id'
+    ];
+
+    public function usuario(){
+        return $this->belongsTo(User::class, 'usuario_id', 'id');
+    }
+
+    public function cartao(){
+        return $this->hasMany(Cartao::class, 'fisico_id', 'id');
+    }
 }
