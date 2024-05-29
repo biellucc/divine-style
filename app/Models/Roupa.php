@@ -11,4 +11,25 @@ class Roupa extends Model
 
     protected $table = 'roupa';
 
+    protected $fillable = [
+        'tipo',
+        'tamanho',
+        'cor',
+        'descricao',
+        'preco',
+        'juridico_id'
+    ];
+
+    protected $hidden = [
+        'juridico_id'
+    ];
+
+    protected $casts = [
+        'preco' => 'decimal:2'
+    ];
+
+    public function juridico(){
+        return $this->belongsTo(Juridico::class, 'juridico_id', 'id');
+    }
+
 }
