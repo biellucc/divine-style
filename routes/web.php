@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/Divine-Style', [SiteController::class, 'dashboard'])->name('site.dashboard');
+Route::get('/', [SiteController::class, 'dashboard'])->name('site.dashboard');
 
-Route::get('/Divine-Style-Formulário-de-Registro', [UserController::class, 'formulario_cadastro'])->name('usuario.formulario_registro');
-Route::get('/Divine-Style-Login', [UserController::class, 'formulario_login'])->name('usuario.formulario_login');
-Route::post('/Divine-Style-Login', [UserController::class, 'login'])->name('usuario.login');
+Route::get('/Formulário-de-Registro', [UserController::class, 'formulario_cadastro'])->name('usuario.formulario_registro');
+Route::get('/Login', [UserController::class, 'formulario_login'])->name('usuario.formulario_login');
+Route::post('/Login', [UserController::class, 'login'])->name('usuario.login');
