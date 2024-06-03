@@ -18,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [SiteController::class, 'dashboard'])->name('site.dashboard');
 
-Route::get('/Formulário-de-Registro', [UserController::class, 'formulario_cadastro'])->name('usuario.formulario_registro');
+Route::controller(UserController::class)->group(function(){
+    Route::get('/Formulário-de-Registro','formulario_cadastro')->name('usuario.formulario_registro');
+    Route::post('/Formulário-de-Registro', 'cadastro')->name('user.cadastro');
+});
+
 Route::controller(LoginController::class)->group(function(){
     Route::post('/Login', 'login')->name('login.login');
     Route::get('/Logout', 'logout')->name('login.logout');
