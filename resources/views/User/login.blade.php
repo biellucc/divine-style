@@ -9,9 +9,12 @@
                     <div class="card-header col text-center bg-warning">{{ __('Login') }}</div>
 
                     <div class="card-body">
-                        <form method="POST" action="{{ route('usuario.login') }}">
+                        <form method="POST" action="{{ route('login.login') }}">
                             @csrf
 
+                            @error('error')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ __('Email') }}</label>
                                 <input type="email" class="form-control" id="email" name="email">
@@ -21,9 +24,9 @@
                             </div>
 
                             <div class="mb-3">
-                                <label for="senha" class="form-label">{{ __('Senha') }}</label>
-                                <input type="password" class="form-control" id="senha" name="senha">
-                                @error('senha')
+                                <label for="password" class="form-label">{{ __('Senha') }}</label>
+                                <input type="password" class="form-control" id="password" name="password">
+                                @error('password')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>

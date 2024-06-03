@@ -43,13 +43,20 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
-                            <li><a class="dropdown-item" href="#">Carrinho</a></li>
-                            <li><a class="dropdown-item" href="#">Cartões</a></li>
+                            @if (Auth::check() && Auth::user()->juridico)
+                            @else
+                                <li><a class="dropdown-item" href="#">Carrinho</a></li>
+                                <li><a class="dropdown-item" href="#">Cartões</a></li>
+                            @endif
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item" href="{{ route('usuario.formulario_login') }}">Login</a></li>
-                            <li><a class="dropdown-item" href="{{ route('usuario.formulario_registro') }}">Registrar</a></li>
+                            @if (Auth::check())
+                                <li><a href="{{ route('login.logout') }}" class="dropdown-item">Logout</a></li>
+                            @else
+                                <li><a class="dropdown-item" href="{{ route('login.index') }}">Login</a></li>
+                                <li><a class="dropdown-item" href="{{ route('usuario.formulario_registro') }}">Registrar</a></li>
+                            @endif
                         </ul>
                     </li>
                 </ul>
