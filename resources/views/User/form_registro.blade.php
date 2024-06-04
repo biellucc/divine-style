@@ -10,32 +10,32 @@
 
             <div class="row">
                 <div class="col-md-6-mb-3">
-                    <label for="userType" class="form-label">Escolha o tipo de usuário:</label>
-                    <select class="form-select" id="userType" name="userType" onchange="showFields(this.value)">
-                        <option value="customer">Cliente</option>
-                        <option value="vendor">Vendedor</option>
+                    <label for="tipoUsuario" class="form-label">Escolha o tipo de usuário:</label>
+                    <select class="form-select" id="tipoUsuario" name="tipoUsuario" onchange="showFields(this.value)">
+                        <option value="cliente">Cliente</option>
+                        <option value="vendedor">Vendedor</option>
                     </select>
                 </div>
 
                 <div class="col-mb-3">
-                    <div id="customerFields" style="display: none">
+                    <div id="clienteFields" style="display: none">
 
                         <div class="row mt-2">
                             <div class="col-md-6 mb-3">
-                                <label for="firstName" class="form-label">Primeiro Nome:</label>
-                                <input type="text" class="form-control  @error('firstName') is-invalid @enderror"
-                                    id="firstName" name="firstName" placeholder="Gabriel">
-                                @error('firstName')
+                                <label for="nome" class="form-label">Primeiro Nome:</label>
+                                <input type="text" class="form-control  @error('nome') is-invalid @enderror"
+                                    id="nome" name="nome" placeholder="Gabriel">
+                                @error('nome')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="lastName" class="form-label">Segundo Nome:</label>
-                                <input type="text" class="form-control  @error('lastName') is-invalid @enderror"
-                                    id="lastName" name="lastName" placeholder="Santos">
-                                @error('lastName')
+                                <label for="sobrenome" class="form-label">Segundo Nome:</label>
+                                <input type="text" class="form-control  @error('sobrenome') is-invalid @enderror"
+                                    id="sobrenome" name="sobrenome" placeholder="Santos">
+                                @error('sobrenome')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -56,18 +56,18 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="birthday" class="form-label">Aniversário:</label>
-                                <input type="date" class="form-control  @error('birthday') is-invalid @enderror"
-                                    id="birthday" name="birthday">
-                                @error('birthday')
+                                <label for="data_nascimento" class="form-label">Aniversário:</label>
+                                <input type="date" class="form-control  @error('data_nascimento') is-invalid @enderror"
+                                    id="data_nascimento" name="data_nascimento">
+                                @error('data_nascimento')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="gender" class="form-label">Seu gênero</label>
-                                <select class="form-select" id="gender" name="gender">
+                                <label for="genero" class="form-label">Seu gênero</label>
+                                <select class="form-select" id="genero" name="genero">
                                     <option value="masculino">Masculino</option>
                                     <option value="feminino">Feminino</option>
                                 </select>
@@ -76,7 +76,7 @@
 
                     </div>
 
-                    <div id="vendorFields" style="display: none">
+                    <div id="vendedorFields" style="display: none">
                         <div class="row mt-2">
                             <div class="col-md-6 mb-3">
                                 <label for="cnpj" class="form-label">CNPJ:</label>
@@ -89,10 +89,10 @@
                                 @enderror
                             </div>
                             <div class="col-md-6 mb-3">
-                                <label for="nameBusines" class="form-label">Nome da Empresa:</label>
-                                <input type="text" class="form-control  @error('nameBusiness') is-invalid @enderror"
-                                    id="nameBusiness" name="nameBusiness" placeholder="XYCompany">
-                                @error('nameBusiness')
+                                <label for="nomeEmpresarial" class="form-label">Nome da Empresa:</label>
+                                <input type="text" class="form-control  @error('nomeEmpresarial') is-invalid @enderror"
+                                    id="nomeEmpresarial" name="nomeEmpresarial" placeholder="XYCompany">
+                                @error('nomeEmpresarial')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
@@ -120,10 +120,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="phone" class="form-label">Telefone:</label>
-                    <input type="text" class="form-control  @error('phone') is-invalid @enderror" id="phone"
-                        name="phone" placeholder="55 (19) 9999-9999">
-                    @error('phone')
+                    <label for="telefone" class="form-label">Telefone:</label>
+                    <input type="text" class="form-control  @error('telefone') is-invalid @enderror" id="telefone"
+                        name="telefone" placeholder="55 (19) 9999-9999">
+                    @error('telefone')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -144,10 +144,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="password_confirmation" class="form-label">Confirmar Senha:</label>
-                    <input type="password" class="form-control  @error('password_confirmation') is-invalid @enderror"
-                        id="password_confirmation" name="password_confirmation">
-                    @error('password_confirmation')
+                    <label for="confirmacao_senha" class="form-label">Confirmar Senha:</label>
+                    <input type="password" class="form-control  @error('confirmacao_senha') is-invalid @enderror"
+                        id="confirmacao_senha" name="confirmacao_senha">
+                    @error('confirmacao_senha')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -170,10 +170,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="neighborhood" class="form-label">Bairro:</label>
-                    <input type="text" class="form-control  @error('neighborhood') is-invalid @enderror"
-                        id="neighborhood" name="neighborhood" placeholder="Cambuí">
-                    @error('neighborhood')
+                    <label for="bairro" class="form-label">Bairro:</label>
+                    <input type="text" class="form-control  @error('bairro') is-invalid @enderror"
+                        id="bairro" name="bairro" placeholder="Cambuí">
+                    @error('bairro')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -183,10 +183,10 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="state" class="form-label">Estado:</label>
-                    <input type="text" class="form-control  @error('state') is-invalid @enderror" id="state"
-                        name="state" placeholder="São Paulo">
-                    @error('state')
+                    <label for="estado" class="form-label">Estado:</label>
+                    <input type="text" class="form-control  @error('estado') is-invalid @enderror" id="estado"
+                        name="estado" placeholder="São Paulo">
+                    @error('estado')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -194,10 +194,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="city" class="form-label">Cidade:</label>
-                    <input type="text" class="form-control  @error('city') is-invalid @enderror" id="city"
-                        name="city" placeholder="Campinas">
-                    @error('city')
+                    <label for="cidade" class="form-label">Cidade:</label>
+                    <input type="text" class="form-control  @error('cidade') is-invalid @enderror" id="cidade"
+                        name="cidade" placeholder="Campinas">
+                    @error('cidade')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -207,10 +207,10 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="n_house" class="form-label">Número da Residência:</label>
-                    <input type="text" class="form-control  @error('n_house') is-invalid @enderror" id="n_house"
-                        name="n_house" placeholder="12">
-                    @error('n_house')
+                    <label for="endereco" class="form-label">Endereço:</label>
+                    <input type="text" class="form-control  @error('endereco') is-invalid @enderror" id="endereco"
+                        name="endereco" placeholder="Campinas">
+                    @error('endereco')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -218,10 +218,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="complement" class="form-label">Complemento (Opcional):</label>
-                    <input type="text" class="form-control  @error('complement') is-invalid @enderror"
-                        id="complement" name="complement">
-                    @error('complement')
+                    <label for="logradouro" class="form-label">Número da Residência:</label>
+                    <input type="text" class="form-control  @error('logradouro') is-invalid @enderror" id="logradouro"
+                        name="logradouro" placeholder="12">
+                    @error('logradouro')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -231,19 +231,19 @@
 
             <script>
                 document.addEventListener('DOMContentLoaded', function() {
-                    showFields(document.getElementById('userType').value);
+                    showFields(document.getElementById('tipoUsuario').value);
                 });
 
-                function showFields(userType) {
-                    if (userType === 'customer') {
-                        document.getElementById('customerFields').style.display = 'block';
-                        document.getElementById('vendorFields').style.display = 'none';
-                    } else if (userType === 'vendor') {
-                        document.getElementById('customerFields').style.display = 'none';
-                        document.getElementById('vendorFields').style.display = 'block';
+                function showFields(tipoUsuario) {
+                    if (tipoUsuario === 'cliente') {
+                        document.getElementById('clienteFields').style.display = 'block';
+                        document.getElementById('vendedorFields').style.display = 'none';
+                    } else if (tipoUsuario === 'vendedor') {
+                        document.getElementById('clienteFields').style.display = 'none';
+                        document.getElementById('vendedorFields').style.display = 'block';
                     } else {
-                        document.getElementById('customerFields').style.display = 'none';
-                        document.getElementById('vendorFields').style.display = 'none';
+                        document.getElementById('clienteFields').style.display = 'none';
+                        document.getElementById('vendedorFields').style.display = 'none';
                     }
                 }
             </script>
