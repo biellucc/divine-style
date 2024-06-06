@@ -22,7 +22,7 @@ return new class extends Migration
             $table->string('cidade', '30');
             $table->string('bairro', '50');
             $table->string('endereco', '80');
-            $table->string('logradouro', '6');
+            $table->string('n_residencia', '6');
             $table->timestamps();
         });
     }

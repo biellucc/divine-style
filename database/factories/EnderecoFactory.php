@@ -19,13 +19,13 @@ class EnderecoFactory extends Factory
     {
         return [
             'usuario_id' => User::pluck('id')->random(),
+            'cep' => $this->faker->postcode(),
             'pais' => $this->faker->country(),
             'estado' =>$this->faker->state(),
             'cidade' => $this->faker->city(),
             'bairro' => $this->faker->streetName(),
             'endereco' => $this->faker->address(),
-            'logradouro' => $this->faker->buildingNumber(),
-            'cep' => $this->faker->postcode()
+            'n_residencia' => $this->faker->buildingNumber()
         ];
     }
 }

@@ -13,4 +13,12 @@ class UserController extends Controller
     public function formulario_cadastro(){
         return view('User.form_registro');
     }
+
+    public function store_cadastro(Request $request){
+        $request->validate(
+            [
+
+            ]
+        );
+    }
 }

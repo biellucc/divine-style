@@ -170,10 +170,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="bairro" class="form-label">Bairro:</label>
-                    <input type="text" class="form-control  @error('bairro') is-invalid @enderror"
-                        id="bairro" name="bairro" placeholder="Cambuí">
-                    @error('bairro')
+                    <label for="pais" class="form-label">Pais:</label>
+                    <input type="text" class="form-control  @error('pais') is-invalid @enderror"
+                        id="pais" name="pais" placeholder="Brasil">
+                    @error('pais')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -207,10 +207,10 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="endereco" class="form-label">Endereço:</label>
-                    <input type="text" class="form-control  @error('endereco') is-invalid @enderror" id="endereco"
-                        name="endereco" placeholder="Campinas">
-                    @error('endereco')
+                    <label for="bairro" class="form-label">Bairro:</label>
+                    <input type="text" class="form-control  @error('bairro') is-invalid @enderror"
+                        id="bairro" name="bairro" placeholder="Jardim América">
+                    @error('bairro')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -218,15 +218,26 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="logradouro" class="form-label">Número da Residência:</label>
-                    <input type="text" class="form-control  @error('logradouro') is-invalid @enderror" id="logradouro"
-                        name="logradouro" placeholder="12">
-                    @error('logradouro')
+                    <label for="endereco" class="form-label">Endereço:</label>
+                    <input type="text" class="form-control  @error('endereco') is-invalid @enderror" id="endereco"
+                        name="endereco" placeholder="Avenida Brasil">
+                    @error('endereco')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
                     @enderror
                 </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+                <label for="n_residencia" class="form-label">Número da Residência:</label>
+                <input type="text" class="form-control  @error('n_residencia') is-invalid @enderror" id="n_residencia"
+                    name="n_residencia" placeholder="123">
+                @error('n_residencia')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <script>
