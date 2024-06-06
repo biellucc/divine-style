@@ -20,7 +20,7 @@ Route::get('/', [SiteController::class, 'dashboard'])->name('site.dashboard');
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/Formulário-de-Registro','formulario_cadastro')->name('usuario.formulario_registro');
-    Route::post('/Formulário-de-Registro', 'cadastro')->name('user.cadastro');
+    Route::post('/Formulário-de-Registro', 'store_cadastro')->name('user.cadastro');
 });
 
 Route::controller(LoginController::class)->group(function(){

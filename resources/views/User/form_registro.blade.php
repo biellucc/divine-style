@@ -133,10 +133,10 @@
 
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="password" class="form-label">Senha:</label>
-                    <input type="password" class="form-control  @error('password') is-invalid @enderror" id="password"
-                        name="password">
-                    @error('password')
+                    <label for="senha" class="form-label">Senha:</label>
+                    <input type="password" class="form-control  @error('senha') is-invalid @enderror" id="senha"
+                        name="senha">
+                    @error('senha')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
@@ -144,10 +144,10 @@
                 </div>
 
                 <div class="col-md-6 mb-3">
-                    <label for="confirmacao_senha" class="form-label">Confirmar Senha:</label>
-                    <input type="password" class="form-control  @error('confirmacao_senha') is-invalid @enderror"
-                        id="confirmacao_senha" name="confirmacao_senha">
-                    @error('confirmacao_senha')
+                    <label for="senha_confirmation " class="form-label">Confirmar Senha:</label>
+                    <input type="password" class="form-control  @error('senha_confirmation ') is-invalid @enderror"
+                        id="senha_confirmation " name="senha_confirmation ">
+                    @error('senha_confirmation ')
                         <div class="invalid-feedback">
                             {{ $message }}
                         </div>
