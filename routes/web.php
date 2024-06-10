@@ -1,8 +1,14 @@
 <?php
 
+use App\Http\Controllers\CarrinhoController;
+use App\Http\Controllers\CartaoController;
+use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\VendaController;
+use App\Models\Cartao;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,4 +33,25 @@ Route::controller(LoginController::class)->group(function(){
     Route::post('/Login', 'login')->name('login.login');
     Route::get('/Logout', 'logout')->name('login.logout');
     Route::get('/Login', 'index')->name('login.index');
+});
+
+Route::controller(EstoqueController::class)->group(function(){
+    Route::get('/Estoque', 'index')->name('estoque.index');
+});
+
+Route::controller(VendaController::class)->group(function(){
+    Route::get('/Vendas', 'index')->name('venda.index');
+});
+
+Route::controller(CartaoController::class)->group(function(){
+    Route::get('/Cartao', 'index')->name('cartao.index');
+});
+
+Route::controller(CarrinhoController::class)->group(function(){
+    Route::get('/Carrinho', 'index')->name('carrinho.index');
+});
+
+Route::controller(PedidoController::class)->group(function(){
+    Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
+
 });

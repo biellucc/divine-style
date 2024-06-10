@@ -44,12 +44,12 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             @if (Auth::check() && Auth::user()->juridico)
-                                <li><a class="dropdown-item" href="#">Estoque</a></li>
-                                <li><a class="dropdown-item" href="#">Vendas</a></li>
+                                <li><a class="dropdown-item" href="{{ route('estoque.index') }}">Estoque</a></li>
+                                <li><a class="dropdown-item" href="{{ route('venda.index') }}">Vendas</a></li>
                             @else
-                                <li><a class="dropdown-item" href="#">Carrinho</a></li>
-                                <li><a class="dropdown-item" href="#">Cartões</a></li>
-                                <li><a class="dropdown-item" href="#">Histórico de Pedidos</a></li>
+                                <li><a class="dropdown-item" href="{{ route('carrinho.index') }}">Carrinho</a></li>
+                                <li><a class="dropdown-item" href="{{ route('cartao.index') }}">Cartões</a></li>
+                                <li><a class="dropdown-item" href="{{ route('pedido.index') }}">Histórico de Pedidos</a></li>
                             @endif
                             <li>
                                 <hr class="dropdown-divider">
