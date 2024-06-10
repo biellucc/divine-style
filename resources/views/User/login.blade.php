@@ -31,6 +31,11 @@
                                 @enderror
                             </div>
 
+                            <div class="mb-3">
+                                <input type="checkbox" id="remember" name="remember" value="true">
+                                <label for="remember">Manter logado</label>
+                            </div>
+
                             <div class="d-grid">
                                 <button type="submit" class="btn btn-warning">{{ __('Entrar') }}</button>
                             </div>

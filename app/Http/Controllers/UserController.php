@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Endereco;
+use App\Models\User;
 use Carbon\Carbon;
+use GuzzleHttp\Promise\Create;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -19,7 +22,6 @@ class UserController extends Controller
         $request->validate(
             [
                 //Validação de Endereço
-                'senha' => 'required|string|min:8|max:13|confirmed',
                 'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{3}$/',
                 'pais' => 'required|string',
                 'estado' => 'required|string',
@@ -30,10 +32,11 @@ class UserController extends Controller
                 //Validação de Contato
                 'email' => 'required|email|unique:users,email',
                 'telefone' => 'required|string|regex:/^\(\d{2}\)\s\d{4,5}-\d{4}$/',
-                'senha' => 'required|string|min:8|max:13|confirmed'
+                'password' => 'required|string|min:8|max:13|confirmed'
             ]
         );
 
+        //Verifica se é um vendedor ou usuário e faz a devida verificação
         if($request->input('tipoUsuario') == 'vendedor'){
             $request->validate(
                 [
@@ -53,6 +56,41 @@ class UserController extends Controller
                 );
         }
 
+        //Criando um usuário
+        $usuario = User::create([
+            'email' => $request->email,
+            'password' => $request->password,
+            'telefone' => $request->telefone
+        ]);
+
+        //Verifica se é um cliente ou vendedor e cria de acordo
+        if($request->input('tipoUsuario') == 'vendedor'){
+            $juridico = $usuario->juridico()->create([
+                'nomeEmpresarial' => $request->nomeEmpresarial,
+                'cnpj' => $request->cnpj
+            ]);
+        }else{
+            $fisico = $usuario->fisico()->create([
+                'nome' => $request->nome,
+                'sobrenome' => $request->sobrenome,
+                'cpf' => $request->cpf,
+                'data_nascimento' => $request->data_nascimento,
+                'genero' => $request->genero
+            ]);
+        }
+
+        //Criando um endereço
+        $endereco = $usuario->endereco()->create([
+            'cep' => $request->cep,
+            'pais' => $request->pais,
+            'estado' => $request->estado,
+            'bairro' => $request->bairro,
+            'endereco' => $request->endereco,
+            'n_residencia' => $request->n_residencia
+        ]);
+
+        Auth::login($usuario, false);
+        return  redirect()->route('site.dashboard');
     }
 
 }

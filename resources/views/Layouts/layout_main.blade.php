@@ -44,9 +44,12 @@
                         <ul class="dropdown-menu">
                             <li><a class="dropdown-item" href="#">Perfil</a></li>
                             @if (Auth::check() && Auth::user()->juridico)
+                                <li><a class="dropdown-item" href="#">Estoque</a></li>
+                                <li><a class="dropdown-item" href="#">Vendas</a></li>
                             @else
                                 <li><a class="dropdown-item" href="#">Carrinho</a></li>
                                 <li><a class="dropdown-item" href="#">Cartões</a></li>
+                                <li><a class="dropdown-item" href="#">Histórico de Pedidos</a></li>
                             @endif
                             <li>
                                 <hr class="dropdown-divider">
@@ -55,7 +58,8 @@
                                 <li><a href="{{ route('login.logout') }}" class="dropdown-item">Logout</a></li>
                             @else
                                 <li><a class="dropdown-item" href="{{ route('login.index') }}">Login</a></li>
-                                <li><a class="dropdown-item" href="{{ route('usuario.formulario_registro') }}">Registrar</a></li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('usuario.formulario_registro') }}">Registrar</a></li>
                             @endif
                         </ul>
                     </li>
@@ -74,7 +78,8 @@
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Perguntas Frequentes</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Perguntas
+                        Frequentes</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ajuda</a></li>
             </ul>

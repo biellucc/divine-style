@@ -20,7 +20,8 @@ class LoginController extends Controller
         ]);
 
         $credentials = $request->only('email', 'password');
-        $authenticated = Auth::attempt($credentials, false);
+        $check_box = $request->filled('remember');
+        $authenticated = Auth::attempt($credentials, $check_box);
 
         if(!$authenticated){
             return redirect()->route('login.index')->withErrors(['error' => 'Email ou senha não existem']);
