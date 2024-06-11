@@ -22,7 +22,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [SiteController::class, 'dashboard'])->name('site.dashboard');
+Route::controller(SiteController::class)->group(function(){
+    Route::get('/', 'dashboard')->name('site.dashboard');
+    Route::get('/produto-[$id]', 'produto')->name('site.produto');
+});
 
 Route::controller(UserController::class)->group(function(){
     Route::get('/Formulário-de-Registro','formulario_cadastro')->name('usuario.formulario_registro');
