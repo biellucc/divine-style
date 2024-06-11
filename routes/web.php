@@ -45,6 +45,9 @@ Route::controller(VendaController::class)->group(function(){
 
 Route::controller(CartaoController::class)->group(function(){
     Route::get('/Cartao', 'index')->name('cartao.index');
+    Route::get('Cartao-gerenciamento-[$id]', 'controle')->name('cartao.controle');
+    Route::get('/Cartao-deletar-cartão', 'delete')->name('cartao.delete');
+    Route::get('/Cartao-atualizar-cartão', 'update')->name('cartao.update');
 });
 
 Route::controller(CarrinhoController::class)->group(function(){
