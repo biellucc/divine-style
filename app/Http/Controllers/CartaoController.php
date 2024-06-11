@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Cartao;
+use App\Models\Fisico;
+use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -15,6 +18,29 @@ class CartaoController extends Controller
             ->get();
 
         return view('User.Fisico.Cartao.cartao', compact('cartaos'));
+    }
+
+    public function formulario() {
+        return view('User.Fisico.Cartao.store');
+    }
+
+    public function store(Request $request){
+        $request->validate([
+            'numero' => 'required|string|regex:/^[0-9]{4}.[0-9]{4}.[0-9]{4}.[0-9]{4}$/',
+            'cvc' => 'required|string|regex:/^[0-9]{3-4}$/',
+            'validade' => 'required|before_or_equal:'.Carbon::now()->subMonth(1)
+        ]);
+
+        $usuario = Auth::user()->fisico;
+        $fisico = Fisico::where('usuario_id', $usuario->id);
+        $cartao = $fisico->cartao()->create([
+            'numero' => $request->numero,
+            'cvc' => $request->cvc,
+            'validade' => $request->validade,
+            'tipo' => $request->tipo
+        ]);
+
+        return redirect()->route('cartao.index');
     }
 
     public function controle(Request $request){
@@ -33,7 +59,15 @@ class CartaoController extends Controller
         return redirect()->route('cartao.index');
     }
 
-    public function update(){
+    public function update(Request $request){
+        $input = $request->only(['cvc', 'numero', 'validade', 'tipo']);
+        $cartao = Cartao::find($request->cartao_id);
+
+        foreach($input as $key => $value){
+            $cartao->$key = $value;
+        }
+
+        $cartao->save();
 
         return redirect()->route('cartao.index');
     }

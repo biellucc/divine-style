@@ -68,7 +68,7 @@
             aria-labelledby="modalcartaoUpdateLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
-                    <div class="modal-header">
+                    <div class="modal-header bg-warning">
                         <h5 class="modal-title" id="modalcartaoUpdateLabel">Alterar Cartão</h5>
                     </div>
                     <div class="modal-body">
@@ -77,18 +77,18 @@
                             <div class="form-group">
                                 <label for="cvc">CVC</label>
                                 <input type="text" class="form-control" id="cvc" name="cvc"
-                                    placeholder="{{ $cartao->cvc }}">
+                                    value="{{ $cartao->cvc }}">
                             </div>
                             <div class="form-group mt-2">
                                 <label type="text" for="numero">Número do
                                     Cartão</label>
                                 <input class="form-control" id="numero" name="numero"
-                                    placeholder="{{ $cartao->numero }}">
+                                    value="{{ $cartao->numero }}">
                             </div>
                             <div class="form-group mt-2">
                                 <label type="text" for="validade">Validade</label>
                                 <input class="form-control" id="validade" name="validade"
-                                    placeholder="{{ $cartao->validade }}">
+                                    value="{{ $cartao->validade }}">
                             </div>
                             <div class="form-group mt-2">
                                 <label for="tipo" class="form-label">Tipo de Cartão</label>
@@ -97,8 +97,9 @@
                                     <option value="Débito">Débito</option>
                                 </select>
                             </div>
+                            <div class="d-grid">
                             <input type="hidden" name="cartao_id" value="{{ $cartao->id }}">
-                            <input type="submit" class="btn btn-primary mt-3" name="action" value="salvar"></input>
+                            <input type="submit" class="btn btn-warning mt-3" name="action" value="Salvar"></input>
                         </form>
                     </div>
                 </div>
