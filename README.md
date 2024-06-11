@@ -13,4 +13,4 @@ Essas medidas visam não apenas atender às necessidades específicas de cada ti
 
 ===========
 
-Data Lançamento 04/06/2024 - Versão 1.0
+Data Lançamento 28/05/2024 - Versão 1.0
