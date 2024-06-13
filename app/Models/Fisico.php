@@ -35,4 +35,8 @@ class Fisico extends Model
     public function cartao(){
         return $this->hasMany(Cartao::class, 'fisico_id', 'id');
     }
+
+    public function carrinhos(){}
+
+    public function pedidos(){}
 }
