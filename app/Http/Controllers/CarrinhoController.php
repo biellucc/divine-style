@@ -9,4 +9,9 @@ class CarrinhoController extends Controller
     public function index(){
         return view('User.Fisico.carrinho');
     }
+
+    public function adicionar(){
+        return view('welcome');
+    }
+
 }
