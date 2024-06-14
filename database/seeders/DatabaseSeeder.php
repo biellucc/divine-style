@@ -20,7 +20,10 @@ class DatabaseSeeder extends Seeder
         FisicoSeeder::class,
         JuridicoSeeder::class,
         CartaoSeeder::class,
-        RoupaSeeder::class
+        RoupaSeeder::class,
+        CarrinhoSeeder::class,
+        //CarrinhoRoupaSeeder::class,
+        PedidoSeeder::class
       ]);
     }
 

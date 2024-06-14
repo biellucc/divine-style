@@ -9,6 +9,8 @@ class Pedido extends Model
 {
     use HasFactory;
 
+    protected $table = 'pedido';
+
     protected $fillable = [
         'valor',
         'status',
@@ -24,7 +26,7 @@ class Pedido extends Model
     ];
 
     protected $casts = [
-        'valor' => 'decimal(8,2)',
+        'valor' => 'decimal:2',
         'status' => 'boolean'
     ];
 

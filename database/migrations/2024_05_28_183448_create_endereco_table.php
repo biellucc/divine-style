@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('usuario_id')->constrained('users');
             $table->string('cep', '11');
-            $table->string('pais', '50');
-            $table->string('estado', '30');
-            $table->string('cidade', '30');
-            $table->string('bairro', '50');
-            $table->string('endereco', '80');
+            $table->string('pais', '100');
+            $table->string('estado', '90');
+            $table->string('cidade', '90');
+            $table->string('bairro', '90');
+            $table->string('endereco', '100');
             $table->string('n_residencia', '6');
             $table->timestamps();
         });

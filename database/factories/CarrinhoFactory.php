@@ -18,7 +18,7 @@ class CarrinhoFactory extends Factory
     public function definition()
     {
         return [
-            'status' =>  $this->faker->random_int(0, 1),
+            'status' =>  $this->faker->boolean(),
             'fisico_id' => Fisico::pluck('id')->random()
         ];
     }

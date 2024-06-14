@@ -20,7 +20,8 @@ class PedidoFactory extends Factory
     public function definition()
     {
         return [
-            'status' =>  $this->faker->random_int(0, 1),
+            'valor' => $this->faker->randomFloat(2,1, 9999),
+            'status' =>  $this->faker->randomElement(['Entregue', 'Em avaliação', 'Em trânsito']),
             'fisico_id' => Fisico::pluck('id')->random(),
             'cartao_id' => Cartao::pluck('id')->random(),
             'carrinho_id' => Carrinho::pluck('id')->random()

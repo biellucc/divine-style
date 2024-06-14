@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('pedido', function (Blueprint $table) {
             $table->id();
             $table->decimal('valor', 8, 2);
-            $table->tinyInteger('status');
+            $table->string('status', '20');
             $table->foreignId('fisico_id')->constrained('fisico');
             $table->foreignId('cartao_id')->constrained('cartao');
             $table->foreignId('carrinho_id')->constrained('carrinho');

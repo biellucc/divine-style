@@ -10,6 +10,8 @@ class Carrinho extends Model
 {
     use HasFactory;
 
+    protected $table = 'carrinho';
+
     protected $fillable = [
         'status',
         'fisico_id'
