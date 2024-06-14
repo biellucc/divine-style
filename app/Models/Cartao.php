@@ -31,4 +31,8 @@ class Cartao extends Model
         return $this->belongsTo(Fisico::class, 'fisico_id', 'id');
     }
 
+    public function pedidos(){
+        return $this->hasMany(Pedido::class, 'cartao_id', 'id');
+    }
+
 }

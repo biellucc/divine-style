@@ -9,8 +9,35 @@ class Pedido extends Model
 {
     use HasFactory;
 
-    public function usuario(){}
+    protected $fillable = [
+        'valor',
+        'status',
+        'fisico_id',
+        'cartao_id',
+        'carrinho_id'
+    ];
 
-    public function carrinho(){}
+    protected $hidden = [
+        'fisico_id',
+        'cartao_id',
+        'carrinho_id'
+    ];
+
+    protected $casts = [
+        'valor' => 'decimal(8,2)',
+        'status' => 'boolean'
+    ];
+
+    public function fisico(){
+        return $this->belongsTo(Fisico::class, 'fisico_id', 'id');
+    }
+
+    public function carrinho(){
+        return $this->belongsTo(Carrinho::class, 'carrinho_id', 'id');
+    }
+
+    public function cartao(){
+        return $this->belongsTo(Cartao::class, 'cartao_id', 'id');
+    }
 
 }

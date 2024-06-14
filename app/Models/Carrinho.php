@@ -9,11 +9,26 @@ class Carrinho extends Model
 {
     use HasFactory;
 
-    public function fisico(){}
+    protected $fillable = [
+        'status',
+        'fisico_id'
+    ];
 
-    public function pedido() {}
+    protected $hidden = [
+        'fisico_id'
+    ];
 
-    public function roupas(){
+    protected $casts = [
+        'status' => 'boolean'
+    ];
 
+    public function fisico(){
+        return $this->belongsTo(Fisico::class, 'fisico_id', 'id');
     }
+
+    public function pedido() {
+        return $this->hasOne(Pedido::class, 'carrinho_id', 'id');
+    }
+
+    public function roupas(){}
 }

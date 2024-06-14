@@ -36,7 +36,11 @@ class Fisico extends Model
         return $this->hasMany(Cartao::class, 'fisico_id', 'id');
     }
 
-    public function carrinhos(){}
+    public function carrinhos(){
+        return $this->hasMany(Carrinho::class, 'fisico_id', 'id');
+    }
 
-    public function pedidos(){}
+    public function pedidos(){
+        return $this->hasMany(Pedido::class, 'fisico_id', 'id');
+    }
 }
