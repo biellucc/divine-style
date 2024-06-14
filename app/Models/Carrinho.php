@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Carrinho extends Model
 {
@@ -30,5 +31,7 @@ class Carrinho extends Model
         return $this->hasOne(Pedido::class, 'carrinho_id', 'id');
     }
 
-    public function roupas(){}
+    public function roupas(): BelongsToMany {
+        return $this->belongsToMany(Roupa::class, 'carrinho_roupa');
+    }
 }
