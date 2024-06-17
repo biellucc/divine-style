@@ -57,8 +57,8 @@ Route::controller(CartaoController::class)->group(function(){
 
 Route::controller(CarrinhoController::class)->group(function(){
     Route::get('/Carrinho', 'index')->name('carrinho.index');
-    Route::get('/Carrinho', 'adicionar')->name('carrinho.add');
-    Route::get('/Carrinho')->name('carrinho.delete');
+    Route::get('/Carrinho-adicionar-produto', 'adicionar')->name('carrinho.add');
+    Route::get('/Carrinho-remover-produto', 'remover')->name('carrinho.remover');
 });
 
 Route::controller(PedidoController::class)->group(function(){
