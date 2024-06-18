@@ -10,12 +10,10 @@
         <div class="card col-md-3 mt-4 mx-4">
             <img src="/assets/imagem/{{ $roupa->image }}" alt="Imagem do Livro" style="padding-top: 20px;">
             <div class="card-body">
-                <p class="card-title"><strong>Tipo: </strong>{{ $roupa->title }}</p>
-                <p class="card-text"><strong>Tamanho: </strong>{{ $roupa->tamanho }}</p>
-                <p class="card-text"><strong>Cor: </strong>{{ $roupa->cor }}</p>
+                <p class="card-title"><strong>Tipo: </strong>{{ $roupa->tipo }}</p>
                 <p class="card-text"><strong>Valor: </strong>{{ $roupa->preco }}</p>
                 <p class="card-text"><strong>Estoque: </strong>{{ $roupa->quantidade }}</p>
-                <a href="{{  }}" class="btn bg-body-warning">Saber mais</a>
+                <a href="{{ route('roupa.produto', ['id' => $roupa->id]) }}" class="btn bg-warning">Saber mais</a>
             </div>
         </div>
         @endforeach

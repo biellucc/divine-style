@@ -5,6 +5,7 @@ use App\Http\Controllers\CartaoController;
 use App\Http\Controllers\EstoqueController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PedidoController;
+use App\Http\Controllers\RoupaController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VendaController;
@@ -38,14 +39,6 @@ Route::controller(LoginController::class)->group(function(){
     Route::get('/Login', 'index')->name('login.index');
 });
 
-Route::controller(EstoqueController::class)->group(function(){
-    Route::get('/Estoque', 'index')->name('estoque.index');
-});
-
-Route::controller(VendaController::class)->group(function(){
-    Route::get('/Vendas', 'index')->name('venda.index');
-});
-
 Route::controller(CartaoController::class)->group(function(){
     Route::get('/Cartao', 'index')->name('cartao.index');
     Route::get('/Cartao-cadastrar-cartão', 'formulario')->name('cartao.formulario');
@@ -65,5 +58,12 @@ Route::controller(PedidoController::class)->group(function(){
     Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
     Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido');
     Route::post('/Pedido-criar', 'store')->name('pedido.adicionar');
+});
 
+Route::controller(RoupaController::class)->group(function(){
+    Route::get('/Roupa-index', 'index')->name('roupa.index');
+    Route::get('/Roupa-[$id]', 'produto')->name('roupa.produto');
+    Route::post('/Roupa-store', 'store')->name('roupa.store');
+    Route::post('/Roupa-alterar', 'alterar')->name('roupa.alterar');
+    Route::post('/Roupa-deletar', 'deletar')->name('roupa.deletar');
 });

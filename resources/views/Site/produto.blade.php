@@ -15,12 +15,13 @@
                         <form action="{{ route('carrinho.add') }}" method="GET">
                             @csrf
                             <input type="hidden" value="{{ $produto->id }}" name="roupa_id">
-                            <button type="submit" href="{{ route('carrinho.add') }}" class="btn btn-warning">Adicionar ao
+                            <button type="submit" class="btn btn-warning">Adicionar ao
                                 carrinho</button>
                         </form>
                     </div>
                     <div class="col-6">
                         <form action="{{ route('carrinho.add') }}" method="GET">
+                            @csrf
                             <button type="submit" href="" class="btn btn-success">Comprar</button>
                         </form>
                     </div>
