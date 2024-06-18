@@ -5,7 +5,7 @@
     <main>
 
         @php
-            $qntd = $carts?->books?->count();
+            $qntd = $carrinho?->roupas?->count();
         @endphp
 
         @if ($qntd > 0)
@@ -28,25 +28,25 @@
                                 </tr>
                             </thead>
 
-                            @foreach ($carts->books as $book)
+                            @foreach ($carrinho->roupas as $roupa)
                                 <tbody>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="/assets/imagem/{{ $book->image }}" alt="Imagem do Livro"
+                                            <img src="/assets/imagem/{{ $roupa->image }}" alt="Imagem do Livro"
                                                 style="padding-top: 10; border-radius:6px">
                                             <div class="d-flex">
                                                 <a class='link_product'
-                                                    href="{{ route('site.view', ['id' => $book->id]) }}">{{ $book->title }}</a>
+                                                    href="">{{ $roupa->tipo }}</a>
                                             </div>
                                         </div>
 
                                     </td>
-                                    <td>{{ $book->value }}</td>
+                                    <td>{{ $roupa->preco }}</td>
                                     <td>
-                                        <form action="{{ route('carts_books.rm') }}" method="POST">
+                                        <form action="" method="POST">
                                             @csrf
-                                            <input type="hidden" name='cart_id' value="{{ $carts->id }}">
-                                            <input type="hidden" name='book_id' value="{{ $book->id }}">
+                                            <input type="hidden" name='carrinho_id' value="{{ $carrinho->id }}">
+                                            <input type="hidden" name='roupa_id' value="{{ $roupa->id }}">
                                             <button type="submit" style="background-color: transparent; border:none"><i
                                                     class='bx bx-x'></i></button>
                                         </form>
@@ -63,7 +63,7 @@
                         <hr class="my-1">
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Sub-total (R$)</span>
-                            <strong>${{ $carts->books->sum('value') }}</strong>
+                            <strong>${{ $carrinho->roupas->sum('preco') }}</strong>
                         </li>
                         <hr class="my-1">
                         <li class="list-group-item d-flex justify-content-between">
@@ -73,13 +73,13 @@
                         <hr class="my-1">
                         <li class="list-group-item d-flex justify-content-between">
                             <span>Total (R$)</span>
-                            <strong>${{ $carts->books->sum('value') }}</strong>
+                            <strong>${{ $carrinho->roupas->sum('preco') }}</strong>
                         </li>
 
                         <div class="mt-2">
-                            <form action="{{ route('cart.pedido') }}" method="GET">
-                                <input type="hidden" name="cart_id" value="{{ $carts->id }}">
-                                <button class="d-flex btn btn-primary">Realizar Pedido</button>
+                            <form action="" method="GET">
+                                <input type="hidden" name="carrinho_id" value="{{ $carrinho->id }}">
+                                <button class="d-flex btn btn-warning">Realizar Pedido</button>
                             </form>
                         </div>
                     </div>

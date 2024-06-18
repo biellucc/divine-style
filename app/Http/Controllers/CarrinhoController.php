@@ -11,7 +11,12 @@ class CarrinhoController extends Controller
 {
     public function index()
     {
-        return view('User.Fisico.carrinho');
+        $fisico = Auth::user()->fisico;
+        $carrinho = $fisico->carrinhos()
+            ->where('status', 1)
+            ->first();
+
+        return view('User.Fisico.carrinho', compact('carrinho'));
     }
 
     public function adicionar(Request $request)
