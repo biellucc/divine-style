@@ -5,12 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Carrinho;
 use App\Models\Pedido;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PedidoController extends Controller
 {
 
     public function index(){
-        return view('User.Fisico.Pedido.lista_pedido');
+        $fisico = Auth::user()->fisico;
+        $pedidos = Pedido::find()
+            ->where('fisico_id', $fisico->id)
+            ->where('status', 1)
+            ->get();
+
+        return view('User.Fisico.Pedido.lista_pedido', compact('pedidos'));
     }
 
     public function formulario_pedido(Request $request)  {
