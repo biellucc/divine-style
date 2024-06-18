@@ -57,4 +57,11 @@ class CarrinhoController extends Controller
 
         return $carrinho;
     }
+
+    public function alterar_Status(Carrinho $carrinho) {
+        $carrinho->status = 0;
+        $carrinho->save;
+
+        return $carrinho;
+    }
 }

@@ -41,18 +41,18 @@
                                 <label for="nome" class="form-label">Primeiro Nome</label>
                                 <input type="text" class="form-control" id="nome" name="nome" placeholder=""
                                     value="{{ $carrinho->fisico?->nome }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('nome')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-sm-6">
                                 <label for="sobrenome" class="form-label">Segundo Nome</label>
                                 <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder=""
                                     value="{{ $carrinho->fisico?->sobrenome }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('sobrenome')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
 
@@ -60,72 +60,72 @@
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder=""
                                     value="{{ $carrinho->fisico->usuario?->email }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-3">
                                 <label for="cep" class="form-label">CEP</label>
                                 <input type="text" class="form-control" name="cep" id="cep" placeholder=""
                                     value="{{ $carrinho->fisico->usuario->endereco?->cep }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('cep')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-5">
                                 <label for="pais" class="form-label">Pais</label>
                                 <input type="text" class="form-control" name="pais" id="pais" placeholder=""
                                     value="{{ $carrinho->fisico->usuario->endereco?->pais }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('pais')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-4">
                                 <label for="estado" class="form-label">Estado</label>
                                 <input type="text" class="form-control" id="estado" name="estado" placeholder=""
                                     value="{{ $carrinho->fisico->usuario->endereco?->estado }}">
-
-                                <div class="invalid-feedback">
-                                </div>
+                                    @error('estado')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-5">
                                 <label for="cidade" class="form-label">Cidade</label>
                                 <input type="text" class="form-control" id="cidade" name="cidade" placeholder=""
                                     value="{{ $carrinho->fisico->usuario->endereco?->cidade }}">
-                                <div class="invalid-feedback">
-                                </div>
+                                    @error('cidade')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-7">
                                 <label for="bairro" class="form-label">Bairro</label>
                                 <input type="text" class="form-control" name="bairro" id="bairro" placeholder=""
                                     value="{{ $carrinho->fisico->usuario->endereco?->bairro }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('bairro')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-8">
                                 <label for="endereco" class="form-label">Endereço</label>
                                 <input type="text" class="form-control" id="endereco" name="endereco"
                                     placeholder="" value="{{ $carrinho->fisico->usuario->endereco?->endereco }}">
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('endereco')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-4">
                                 <label for="n_residencia" class="form-label">Número da casa</label>
                                 <input type="number" class="form-control" id="n_residencia" name="n_residencia"
                                     placeholder="" value="{{ $carrinho->fisico->usuario->endereco?->n_residencia }}">
-
-                                <div class="invalid-feedback">
-
-                                </div>
+                                    @error('n_residencia')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="col-md-6">
@@ -136,14 +136,15 @@
                                         </option>
                                     @endforeach
                                 </select>
-                                <div class="invalid-feedback">
-
-                                </div>
+                                @error('cartao')
+                                <div class="invalid-feedback">{{ $message }}</div>
+                            @enderror
                             </div>
 
                             <hr class="my-4">
 
                             <input type="hidden" value="{{ $carrinho->id }}" name="carrinho_id">
+                            <input type="hidden" value="{{ $carrinho->roupas->sum('preco') }}" name="valor">
                             <button class="w-100 btn btn-warning btn-lg" type="submit">Confirmar Pedido</button>
                         </div>
                     </form>
