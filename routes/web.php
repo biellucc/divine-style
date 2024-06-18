@@ -63,5 +63,7 @@ Route::controller(CarrinhoController::class)->group(function(){
 
 Route::controller(PedidoController::class)->group(function(){
     Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
+    Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido');
+    Route::post('/Pedido-criar', 'store')->name('pedido.adicionar');
 
 });

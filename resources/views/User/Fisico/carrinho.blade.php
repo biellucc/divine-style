@@ -77,7 +77,7 @@
                         </li>
 
                         <div class="mt-2">
-                            <form action="" method="GET">
+                            <form action="{{ route('pedido.formulario_pedido') }}" method="GET">
                                 <input type="hidden" name="carrinho_id" value="{{ $carrinho->id }}">
                                 <button class="d-flex btn btn-warning">Realizar Pedido</button>
                             </form>
