@@ -10,7 +10,7 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <nav class="navbar navbar-expand-lg bg-warning">
         <div class="container-fluid">
             <a class="navbar-brand" href='{{ route('site.dashboard') }}'>Divine Style</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -65,8 +65,8 @@
                     </li>
                 </ul>
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success" type="submit">Search</button>
+                    <input class="form-control me-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                    <button class="btn btn-light" type="submit">Pesquisar</button>
                 </form>
             </div>
         </div>

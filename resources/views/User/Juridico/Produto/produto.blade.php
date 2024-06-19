@@ -11,16 +11,19 @@
                 </div>
 
                 <div class="row mt-2">
-                    <div class="col-6">
+                    <div class="col-2">
                             <button type="button" class="btn btn-warning" data-bs-toggle="modal"
                             data-bs-target="#alteracaoModal">Alterar</button>
                     </div>
-                    <div class="col-6">
+                    <div class="col-2">
                         <form action="{{ route('roupa.deletar') }}" method="POST">
                             @csrf
                             <input type="hidden" preco="{{ $produto->id }}" name="roupa_id">
                             <button type="button" class="btn btn-danger">Deletar</button>
                         </form>
+                    </div>
+                    <div class="col-2">
+                        <a href="{{ route('roupa.index') }}" class="btn btn-success">Voltar</a>
                     </div>
                 </div>
             </div>
@@ -37,22 +40,6 @@
                     <h4>{{ _('Descrição') }}</h4>
                     <p><span>{{ $produto?->descricao }}</span></p>
                 </div>
-                <div class="mt-2">
-                    <h4>{{ _('Informações do Vendedor') }}</h4>
-                    <p><span>Nome: {{ $produto->juridico?->nomeEmpresarial }}</span></p>
-                    <p><span>Email: {{ $produto->juridico->usuario?->email }}</span></p>
-                    <p><span>Telefone: {{ $produto->juridico->usuario?->telefone }}</span></p>
-                </div>
-                <div class="mt-2">
-                    <h4>{{ _('Endereço do Vendedor') }}</h4>
-                    <p><span>País: {{ $produto->juridico->usuario->endereco?->pais }}</span></p>
-                    <p><span>Estado: {{ $produto->juridico->usuario->endereco?->estado }}</span></p>
-                    <p><span>Cidade: {{ $produto->juridico->usuario->endereco?->cidade }}</span></p>
-                    <p><span>Bairro: {{ $produto->juridico->usuario->endereco?->bairro }}</span></p>
-                    <p><span>Endereço: {{ $produto->juridico->usuario->endereco?->endereco }},
-                            {{ $produto->juridico->usuario->endereco?->logradouro }}</span></p>
-                </div>
-            </div>
 
         </div>
 
@@ -118,10 +105,10 @@
                         </div>
 
                         <div class="mb-3">
-                            <label for="preco" class="form-label">{{ __('Preoço') }}</label>
+                            <label for="preco" class="form-label">{{ __('Preço') }}</label>
                             <input type="number" step="any"
                                 class="form-control  @error('preco') is-invalid @enderror" id="number_wallet"
-                                id="preco" name="preco" value="{{ $produto->preco }}">
+                                id="preco" name="preco" value="{{ $produto->preco }}" min="1">
                             @error('preco')
                                 <div class="invalid-feedback">
                                     {{ $message }}
