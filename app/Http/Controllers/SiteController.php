@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\DB;
 class SiteController extends Controller
 {
     public function dashboard(){
-        $roupas = Roupa::all();
+        $roupas = Roupa::where('status', 1)->get();
 
         return view('Site.welcome', compact('roupas'));
     }

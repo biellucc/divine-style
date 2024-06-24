@@ -53,7 +53,7 @@ class PedidoController extends Controller
         ]);
 
         $carrinho->status = 0;
-        $carrinho->save;
+        $carrinho->save();
 
         return redirect()->route('pedido.index');
     }

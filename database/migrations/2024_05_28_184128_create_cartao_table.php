@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('numero', '20');
             $table->date('validade');
             $table->string('tipo', '20');
+            $table->tinyInteger('status');
             $table->timestamps();
         });
     }

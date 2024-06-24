@@ -11,7 +11,7 @@ class RoupaController extends Controller
     public function index()
     {
         $juridico = Auth::user()->juridico;
-        $roupas = $juridico->roupas()->get()->sortBy('created_at');
+        $roupas = $juridico->roupas()->where('status', 1)->get()->sortBy('created_at');
 
         return view('User.Juridico.Produto.index', compact('roupas'));
     }
@@ -31,7 +31,7 @@ class RoupaController extends Controller
             'cor' => 'required', 'string', 'max:20',
             'descricao' => 'required', 'string',
             'preco' => 'required', 'numeric', 'between:1,9999',
-            //'imagem' => 'required', 'image', 'mimes:jpg, jpeg, png'
+            'imagem' => 'required', 'image', 'mimes:jpg, jpeg, png'
         ]);
 
         $juridico = Auth::user()->juridico;
@@ -42,7 +42,8 @@ class RoupaController extends Controller
             'cor' => $request->cor,
             'descricao' => $request->descricao,
             'preco' => $request->preco,
-            //'imagem' => $request->imagem
+            'imagem' => $request->imagem,
+            'status' => 1
         ]);
 
         return redirect()->back();
@@ -69,7 +70,7 @@ class RoupaController extends Controller
         ]);
 
         $roupa = Roupa::find($request->produto_id);
-        $input = $request->except(['_token', 'produto_id', 'imagem']);
+        $input = $request->except(['_token', 'produto_id']);
 
         foreach ($input as $key => $value) {
             $roupa->$key = $value;

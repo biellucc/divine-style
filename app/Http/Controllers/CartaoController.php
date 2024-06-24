@@ -14,6 +14,7 @@ class CartaoController extends Controller
     public function index(){
         $usuario = Auth::user()->fisico;
         $cartaos = Cartao::where('fisico_id', $usuario->id)
+            ->where('status', 1)
             ->orderBy('created_at', 'desc')
             ->get();
 
@@ -37,7 +38,8 @@ class CartaoController extends Controller
             'numero' => $request->numero,
             'cvc' => $request->cvc,
             'validade' => $request->validade,
-            'tipo' => $request->tipo
+            'tipo' => $request->tipo,
+            'status' => 1
         ]);
 
         return redirect()->route('cartao.index');

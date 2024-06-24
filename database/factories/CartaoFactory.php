@@ -22,7 +22,8 @@ class CartaoFactory extends Factory
             'cvc' => $this->faker->randomNumber(4, true),
             'tipo' => $this->faker->creditCardType(),
             'validade' =>$this->faker->creditCardExpirationDate(),
-            'fisico_id' => Fisico::pluck('id')->random()
+            'fisico_id' => Fisico::pluck('id')->random(),
+            'status' => $this->faker->boolean()
         ];
     }
 }
