@@ -11,7 +11,7 @@ class SiteController extends Controller
     public function dashboard(){
         $roupas = Roupa::all();
 
-        return view('welcome', compact('roupas'));
+        return view('Site.welcome', compact('roupas'));
     }
 
     public function sobre_site(){
