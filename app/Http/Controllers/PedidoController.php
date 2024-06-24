@@ -52,7 +52,8 @@ class PedidoController extends Controller
             'carrinho_id' => $request->carrinho_id
         ]);
 
-        //$carrinho = $this->alterar_status($carrinho);
+        $carrinho->status = 0;
+        $carrinho->save;
 
         return redirect()->route('pedido.index');
     }
