@@ -26,6 +26,9 @@ use Illuminate\Support\Facades\Route;
 Route::controller(SiteController::class)->group(function(){
     Route::get('/', 'dashboard')->name('site.dashboard');
     Route::get('/produto-[$id]', 'produto')->name('site.produto');
+    Route::get('/ajuda', 'ajuda')->name('site.ajuda');
+    Route::get('/perguntas-frequentes', 'perquntas_frequentes')->name('site.perguntas_frequentes');
+    Route::get('/sobre-nós', 'sobre_site')->name('site.sobre');
 });
 
 Route::controller(UserController::class)->group(function(){

@@ -14,6 +14,18 @@ class SiteController extends Controller
         return view('welcome', compact('roupas'));
     }
 
+    public function sobre_site(){
+        return view('Site.sobre');
+    }
+
+    public function ajuda(){
+        return view('Site.ajuda');
+    }
+
+    public function perquntas_frequentes(){
+        return view('Site.perguntas_frequentes');
+    }
+
     public function produto(Request $request){
         $produto = Roupa::find($request->id);
 

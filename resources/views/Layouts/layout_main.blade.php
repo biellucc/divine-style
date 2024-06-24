@@ -77,11 +77,11 @@
     <div class="container">
         <footer class="py-3 my-4">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Home</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Perguntas
+                <li class="nav-item"><a href="{{ route('site.dashboard') }}" class="nav-link px-2 text-body-secondary">Home</a></li>
+                <li class="nav-item"><a href="{{ route('site.perguntas_frequentes') }}" class="nav-link px-2 text-body-secondary">Perguntas
                         Frequentes</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Sobre</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Ajuda</a></li>
+                <li class="nav-item"><a href="{{ route('site.sobre') }}" class="nav-link px-2 text-body-secondary">Sobre</a></li>
+                <li class="nav-item"><a href="{{ route('site.ajuda') }}" class="nav-link px-2 text-body-secondary">Ajuda</a></li>
             </ul>
             <p class="text-center text-body-secondary">© 2024 Divine Style</p>
         </footer>
