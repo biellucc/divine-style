@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('cor','21');
             $table->text('descricao')->nullable();
             $table->decimal('preco',6,2);
+            $table->string('imagem');
             $table->tinyInteger('status');
             $table->timestamps();
         });

@@ -36,13 +36,18 @@ class RoupaController extends Controller
 
         $juridico = Auth::user()->juridico;
 
+        $requestImagem = $request->imagem;
+        $extensao = $requestImagem->extension();
+        $imagemNome = md5($requestImagem->getClientOriginalName() . strtotime('now') . '.' . $extensao);
+        $requestImagem->move(public_path('img/roupas'), $imagemNome);
+
         $roupa = $juridico->roupas()->create([
             'tipo' => $request->tipo,
             'tamanho' => $request->tamanho,
             'cor' => $request->cor,
             'descricao' => $request->descricao,
             'preco' => $request->preco,
-            'imagem' => $request->imagem,
+            'imagem' => $imagemNome,
             'status' => 1
         ]);
 

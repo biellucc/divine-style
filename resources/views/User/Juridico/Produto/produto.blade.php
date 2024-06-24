@@ -7,7 +7,7 @@
 
             <div class="col-8">
                 <div>
-                    <img src="/public/assets/{{ $produto->imagem }}" alt="{{ $produto->tipo }}" class="img-fluid">
+                    <img src="/img/roupas/{{ $produto->imagem }}" alt="{{ $produto->tipo }}" class="img-fluid">
                 </div>
 
                 <div class="row mt-2">

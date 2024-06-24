@@ -16,6 +16,7 @@ class Cartao extends Model
         'numero',
         'validade',
         'tipo',
+        'status',
         'fisico_id'
     ];
 
@@ -24,7 +25,8 @@ class Cartao extends Model
     ];
 
     protected $casts = [
-        'validade' => 'date'
+        'validade' => 'date',
+        'status' => 'boolean'
     ];
 
     public function fisico(){

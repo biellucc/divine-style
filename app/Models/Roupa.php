@@ -18,6 +18,8 @@ class Roupa extends Model
         'cor',
         'descricao',
         'preco',
+        'status',
+        'imagem',
         'juridico_id'
     ];
 
@@ -26,15 +28,17 @@ class Roupa extends Model
     ];
 
     protected $casts = [
-        'preco' => 'decimal:2'
+        'preco' => 'decimal:2',
+        'status' => 'boolean'
     ];
 
-    public function juridico(){
+    public function juridico()
+    {
         return $this->belongsTo(Juridico::class, 'juridico_id', 'id');
     }
 
-    public function carrinhos(): BelongsToMany{
+    public function carrinhos(): BelongsToMany
+    {
         return $this->belongsToMany(Carrinho::class, 'carrinho_roupa');
     }
-
 }
