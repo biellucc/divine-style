@@ -12,8 +12,7 @@ class PedidoController extends Controller
 
     public function index(){
         $fisico = Auth::user()->fisico;
-        $pedidos = Pedido::find()
-            ->where('fisico_id', $fisico->id)
+        $pedidos = Pedido::where('fisico_id', $fisico->id)
             ->where('status', 1)
             ->get();
 

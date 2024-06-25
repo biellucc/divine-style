@@ -2,33 +2,48 @@
 @section('title', 'Meus produtos cadastrados')
 @section('conteudo')
 
-    <div class="container d-flex justify-content-center" style="min-height: 100vh;">
-        <div id="livros-container" class="col-md-12 text-center">
-            <div class="row mt-4">
-                <div class="col-2">
-                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
-                        data-bs-target="#storeRoupa">Cadastrar</button>
-                </div>
-                <div class="col-7">
-                    <h2>Meus Produtos Cadastrados</h2>
-                </div>
-            </div>
-            <div id="card-container" class="row">
-                @foreach ($roupas as $roupa)
-                    <div class="card col-md-3 mt-4 mx-4">
-                        <img src="/img/roupas/{{ $roupa->imagem }}" alt="Imagem do produto" style="padding-top: 20px;">
-                        <div class="card-body">
-                            <p class="card-title"><strong>Tipo: </strong>{{ $roupa->tipo }}</p>
-                            <p class="card-text"><strong>Valor: </strong>{{ $roupa->preco }}</p>
-                            <p class="card-text"><strong>Estoque: </strong>{{ $roupa->quantidade }}</p>
-                            <a href="{{ route('roupa.produto', ['id' => $roupa->id]) }}" class="btn bg-warning">Saber
-                                mais</a>
-                        </div>
+    @if ($roupas->isNotEmpty())
+        <div class="container d-flex justify-content-center" style="min-height: 100vh;">
+            <div id="livros-container" class="col-md-12 text-center">
+                <div class="row mt-4">
+                    <div class="col-2">
+                        <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                            data-bs-target="#storeRoupa">Cadastrar produto</button>
                     </div>
-                @endforeach
+                    <div class="col-7">
+                        <h2>Meus Produtos Cadastrados</h2>
+                    </div>
+                </div>
+                <div id="card-container" class="row">
+                    @foreach ($roupas as $roupa)
+                        <div class="card col-md-3 mt-4 mx-4">
+                            <img src="/img/roupas/{{ $roupa->imagem }}" alt="Imagem do produto" style="padding-top: 20px;">
+                            <div class="card-body">
+                                <p class="card-title"><strong>Tipo: </strong>{{ $roupa->tipo }}</p>
+                                <p class="card-text"><strong>Valor: </strong>{{ $roupa->preco }}</p>
+                                <p class="card-text"><strong>Estoque: </strong>{{ $roupa->quantidade }}</p>
+                                <a href="{{ route('roupa.produto', ['id' => $roupa->id]) }}" class="btn bg-warning">Saber
+                                    mais</a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
+    @else
+        <div class="d-flex justify-content-center mt-4">
+            <div class="row">
+                <div class="col-2">
+                    <button type="button" class="btn btn-warning" data-bs-toggle="modal"
+                        data-bs-target="#storeRoupa">Cadastrar produto</button>
+                </div>
+
+                <div class="col-7">
+                    <h1>Ops estoque vazio</h1>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <!--- Modal de Cadastro de roupas --->
     <div class="modal fade" id="storeRoupa" tabindex="-1" aria-labelledby="storeRoupaLabel" aria-hidden="true">
@@ -77,7 +92,7 @@
                         <div class="mb-3">
                             <label for="descricao" class="form-label">{{ __('Descrição') }}</label>
                             <textarea class="form-control  @error('descricao') is-invalid @enderror" id="descricao" name="descricao" rows="5">
-                            </textarea>
+                                </textarea>
                             @error('descricao')
                                 <div class="invalid-feedback">
                                     {{ $message }}

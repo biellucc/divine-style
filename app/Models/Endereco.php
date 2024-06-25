@@ -18,7 +18,7 @@ class Endereco extends Model
         'cidade',
         'bairro',
         'endereco',
-        'logradouro',
+        'n_residencia',
         'usuario_id'
     ];
 

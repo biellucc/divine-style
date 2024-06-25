@@ -11,7 +11,8 @@ use Illuminate\Support\Facades\Auth;
 
 class CartaoController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $usuario = Auth::user()->fisico;
         $cartaos = Cartao::where('fisico_id', $usuario->id)
             ->where('status', 1)
@@ -21,15 +22,17 @@ class CartaoController extends Controller
         return view('User.Fisico.Cartao.cartao', compact('cartaos'));
     }
 
-    public function formulario() {
+    public function formulario()
+    {
         return view('User.Fisico.Cartao.store');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $request->validate([
             'numero' => 'required|string|regex:/^[0-9]{4}.[0-9]{4}.[0-9]{4}.[0-9]{4}$/',
             'cvc' => 'required|string|regex:/^[0-9]{3-4}$/',
-            'validade' => 'required|before_or_equal:'.Carbon::now()->subMonth(1)
+            'validade' => 'required|before_or_equal:' . Carbon::now()->subMonth(1)
         ]);
 
         $usuario = Auth::user()->fisico;
@@ -45,15 +48,17 @@ class CartaoController extends Controller
         return redirect()->route('cartao.index');
     }
 
-    public function controle(Request $request){
-        if($request->input('action') == 'deletar'){
+    public function controle(Request $request)
+    {
+        if ($request->input('action') == 'deletar') {
             return redirect()->route('cartao.delete', $request);
-        }else{
+        } else {
             return redirect()->route('cartao.update', $request);
         }
     }
 
-    public function delete(Request $request){
+    public function delete(Request $request)
+    {
         $cartao = Cartao::find($request->cartao_id);
         $cartao->status = 0;
         $cartao->save();
@@ -61,11 +66,12 @@ class CartaoController extends Controller
         return redirect()->route('cartao.index');
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         $input = $request->only(['cvc', 'numero', 'validade', 'tipo']);
         $cartao = Cartao::find($request->cartao_id);
 
-        foreach($input as $key => $value){
+        foreach ($input as $key => $value) {
             $cartao->$key = $value;
         }
 

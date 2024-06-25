@@ -84,8 +84,8 @@ class UserController extends Controller
         $endereco = $usuario->endereco()->create([
             'cep' => $request->cep,
             'pais' => $request->pais,
-            'cidade' => $request->cidade,
             'estado' => $request->estado,
+            'cidade' => $request->cidade,
             'bairro' => $request->bairro,
             'endereco' => $request->endereco,
             'n_residencia' => $request->n_residencia
