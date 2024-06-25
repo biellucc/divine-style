@@ -25,14 +25,15 @@ class UserController extends Controller
                 'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{3}$/',
                 'pais' => 'required|string',
                 'estado' => 'required|string',
+                'cidade' => 'required|string',
                 'bairro' => 'required|string',
                 'endereco' => 'required|string',
                 'n_residencia' => 'required|string',
 
                 //Validação de Contato
                 'email' => 'required|email|unique:users,email',
-                'telefone' => 'required|string|regex:/^\(\d{2}\)\s\d{4,5}-\d{4}$/',
-                'password' => 'required|string|min:8|max:13|confirmed'
+                'telefone' => 'required|string',
+                'password' => 'required|string|min:8|max:13'
             ]
         );
 
@@ -83,6 +84,7 @@ class UserController extends Controller
         $endereco = $usuario->endereco()->create([
             'cep' => $request->cep,
             'pais' => $request->pais,
+            'cidade' => $request->cidade,
             'estado' => $request->estado,
             'bairro' => $request->bairro,
             'endereco' => $request->endereco,

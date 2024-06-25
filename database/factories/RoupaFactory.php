@@ -23,7 +23,7 @@ class RoupaFactory extends Factory
             'cor' => $this->faker->colorName(),
             'tamanho' => $this->faker->randomElement(['P', 'M', 'G','G1', 'G2', 'G3', 'G4']),
             'descricao' => $this->faker->text(90),
-            'preco' => $this->faker->randomFloat(2, 1, 9999),
+            'preco' => $this->faker->randomFloat(2, 1, 1000),
             'imagem' => $this->faker->imageUrl(),
             'status' => $this->faker->boolean()
         ];
