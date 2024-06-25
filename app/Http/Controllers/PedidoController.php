@@ -13,7 +13,6 @@ class PedidoController extends Controller
     public function index(){
         $fisico = Auth::user()->fisico;
         $pedidos = Pedido::where('fisico_id', $fisico->id)
-            ->where('status', 1)
             ->get();
 
         return view('User.Fisico.Pedido.lista_pedido', compact('pedidos'));
@@ -55,5 +54,11 @@ class PedidoController extends Controller
         $carrinho->save();
 
         return redirect()->route('pedido.index');
+    }
+
+    public function pedido(Request $request){
+        $pedido = Pedido::find($request->id);
+
+        return view('User.Fisico.Pedido.pedido', compact('pedido'));
     }
 }

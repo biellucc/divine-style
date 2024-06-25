@@ -4,7 +4,7 @@
 
     @if ($roupas->isNotEmpty())
         <div class="container d-flex justify-content-center" style="min-height: 100vh;">
-            <div id="livros-container" class="col-md-12 text-center">
+            <div id="produtos-container" class="col-md-12 text-center">
                 <div class="row mt-4">
                     <div class="col-2">
                         <button type="button" class="btn btn-warning" data-bs-toggle="modal"

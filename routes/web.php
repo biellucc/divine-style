@@ -8,8 +8,6 @@ use App\Http\Controllers\PedidoController;
 use App\Http\Controllers\RoupaController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\VendaController;
-use App\Models\Cartao;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -61,6 +59,7 @@ Route::controller(PedidoController::class)->group(function(){
     Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
     Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido');
     Route::post('/Pedido-criar', 'store')->name('pedido.adicionar');
+    Route::post('/Pedido-[$id]', 'pedido')->name('pedido.pedido');
 });
 
 Route::controller(RoupaController::class)->group(function(){

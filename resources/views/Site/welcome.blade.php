@@ -4,7 +4,7 @@
 
     @if ($roupas->isNotEmpty())
         <div class="container d-flex justify-content-center" style="min-height: 100vh;">
-            <div id="livros-container" class="col-md-12 text-center">
+            <div id="produtos-container" class="col-md-12 text-center">
                 <div id="card-container" class="row justify-content-center">
                     @foreach ($roupas as $roupa)
                         <div class="card col-12 col-sm-6 col-md-4 col-lg-3 mt-4 mx-4">
