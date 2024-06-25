@@ -57,10 +57,11 @@ class UserController extends Controller
                 );
         }
 
+        $senha = Hash::make($request->password);
         //Criando um usuário
         $usuario = User::create([
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => $senha,
             'telefone' => $request->telefone
         ]);
 
