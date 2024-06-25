@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Roupa;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class RoupaController extends Controller
 {
@@ -36,10 +37,7 @@ class RoupaController extends Controller
 
         $juridico = Auth::user()->juridico;
 
-        $requestImagem = $request->imagem;
-        $extensao = $requestImagem->extension();
-        $imagemNome = md5($requestImagem->getClientOriginalName() . strtotime('now') . '.' . $extensao);
-        $requestImagem->move(public_path('img/roupas'), $imagemNome);
+        $imagemNome = $this->criar_nome_imagem($request);
 
         $roupa = $juridico->roupas()->create([
             'tipo' => $request->tipo,
@@ -75,7 +73,11 @@ class RoupaController extends Controller
         ]);
 
         $roupa = Roupa::find($request->produto_id);
-        $input = $request->except(['_token', 'produto_id']);
+        $input = $request->except(['_token', 'produto_id', 'imagem']);
+
+        Storage::delete($roupa->imagem);
+        $imagemNome = $this->criar_nome_imagem($request);
+        $roupa->imagem = $imagemNome;
 
         foreach ($input as $key => $value) {
             $roupa->$key = $value;
@@ -84,5 +86,14 @@ class RoupaController extends Controller
         $roupa->save();
 
         return redirect()->back();
+    }
+
+    public function criar_nome_imagem(Request $request)  {
+        $requestImagem = $request->imagem;
+        $extensao = $requestImagem->extension();
+        $imagemNome = md5($requestImagem->getClientOriginalName() . strtotime('now') . '.' . $extensao);
+        $requestImagem->move(public_path('img/roupas'), $imagemNome);
+
+        return $imagemNome;
     }
 }
