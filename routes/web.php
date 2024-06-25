@@ -43,7 +43,7 @@ Route::controller(LoginController::class)->group(function(){
 Route::controller(CartaoController::class)->group(function(){
     Route::get('/Cartao', 'index')->name('cartao.index');
     Route::get('/Cartao-cadastrar-cartão', 'formulario')->name('cartao.formulario');
-    Route::post('/Cartão-cadastrar-cartão', 'soter')->name('cartao.store');
+    Route::post('/Cartão-cadastrar-cartão', 'store')->name('cartao.store');
     Route::get('Cartao-gerenciamento-[$id]', 'controle')->name('cartao.controle');
     Route::get('/Cartao-deletar-cartão', 'delete')->name('cartao.delete');
     Route::get('/Cartao-atualizar-cartão', 'update')->name('cartao.update');
@@ -59,11 +59,11 @@ Route::controller(PedidoController::class)->group(function(){
     Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
     Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido');
     Route::post('/Pedido-criar', 'store')->name('pedido.adicionar');
-    Route::post('/Pedido-[$id]', 'pedido')->name('pedido.pedido');
+    Route::get('/Pedido-[$id]', 'pedido')->name('pedido.pedido');
 });
 
 Route::controller(RoupaController::class)->group(function(){
-    Route::get('/Roupa-index', 'index')->name('roupa.index');
+    Route::get('/Roupa-estoque', 'index')->name('roupa.index');
     Route::get('/Roupa-[$id]', 'produto')->name('roupa.produto');
     Route::post('/Roupa-store', 'store')->name('roupa.store');
     Route::post('/Roupa-alterar', 'alterar')->name('roupa.alterar');

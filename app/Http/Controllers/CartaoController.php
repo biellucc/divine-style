@@ -31,12 +31,11 @@ class CartaoController extends Controller
     {
         $request->validate([
             'numero' => 'required|string|regex:/^[0-9]{4}.[0-9]{4}.[0-9]{4}.[0-9]{4}$/',
-            'cvc' => 'required|string|regex:/^[0-9]{3-4}$/',
-            'validade' => 'required|before_or_equal:' . Carbon::now()->subMonth(1)
+            'cvc' => 'required|string|regex:/^[0-9]{3,4}$/',
+            //'validade' => 'required|before_or_equal:'. Carbon::now()->subMonth(1)->format('y-m-d')
         ]);
 
-        $usuario = Auth::user()->fisico;
-        $fisico = Fisico::where('usuario_id', $usuario->id);
+        $fisico = Auth::user()->fisico;
         $cartao = $fisico->cartao()->create([
             'numero' => $request->numero,
             'cvc' => $request->cvc,

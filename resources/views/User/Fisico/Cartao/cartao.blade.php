@@ -5,8 +5,19 @@
     <main>
 
         @if ($cartaos->isNotEmpty())
-            <div class="d-flex justify-content-center mt-4">
-                <h2>Cartões Cadastrados</h2>
+            <div class="container d-flex justify-content-center">
+                <div class="row mt-4">
+                    <div class="col-3">
+                        <form action="{{ route('cartao.formulario') }}" method="get">
+                            <a href="{{ route('cartao.formulario') }}"
+                                class="btn btn-warning">{{ __('Cadastrar') }}</a>
+                        </form>
+                    </div>
+
+                    <div class="col-8">
+                        <h2>Cartões Cadastrados</h2>
+                    </div>
+                </div>
             </div>
 
             <div class="container mt-3">
@@ -30,7 +41,8 @@
                                                 <p class="card-text"><strong>CVC: </strong>{{ $cartao->cvc }}</p>
                                             </div>
                                             <div class="col-8">
-                                                <p class="card-text"><strong>Validade: </strong>{{ $cartao->validade }}</p>
+                                                <p class="card-text"><strong>Validade: </strong>{{ $cartao->validade }}
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -84,7 +96,8 @@
                                 <div class="form-group mt-2">
                                     <label type="text" for="numero">Número do
                                         Cartão</label>
-                                    <input class="form-control" id="numero" name="numero" value="{{ $cartao->numero }}">
+                                    <input class="form-control" id="numero" name="numero"
+                                        value="{{ $cartao->numero }}">
                                 </div>
                                 <div class="form-group mt-2">
                                     <label type="text" for="validade">Validade</label>
@@ -109,7 +122,18 @@
             </div>
         @else
             <div class="d-flex justify-content-center mt-4">
-                <h1>Ops carteira vazia</h1>
+                <div class="row">
+                    <div class="col-2">
+                        <form action="{{ route('cartao.formulario') }}" method="get">
+                            <a href="{{ route('cartao.formulario') }}"
+                                class="btn btn-warning">{{ __('Cadastrar Cartão') }}</a>
+                        </form>
+                    </div>
+
+                    <div class="col-7">
+                        <h1>Ops carteira vazia</h1>
+                    </div>
+                </div>
             </div>
         @endif
 

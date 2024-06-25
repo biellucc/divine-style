@@ -26,8 +26,7 @@ class Pedido extends Model
     ];
 
     protected $casts = [
-        'valor' => 'decimal:2',
-        'status' => 'boolean'
+        'valor' => 'decimal:2'
     ];
 
     public function fisico(){

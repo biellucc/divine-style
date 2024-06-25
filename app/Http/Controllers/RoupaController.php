@@ -58,7 +58,7 @@ class RoupaController extends Controller
         $roupa->status = 0;
         $roupa->save();
 
-        return redirect()->back();
+        return redirect()->route('roupa.index');
     }
 
     public function alterar(Request $request)

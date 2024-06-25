@@ -10,7 +10,8 @@ use Illuminate\Support\Facades\Auth;
 class PedidoController extends Controller
 {
 
-    public function index(){
+    public function index()
+    {
         $fisico = Auth::user()->fisico;
         $pedidos = Pedido::where('fisico_id', $fisico->id)
             ->get();
@@ -18,13 +19,15 @@ class PedidoController extends Controller
         return view('User.Fisico.Pedido.lista_pedido', compact('pedidos'));
     }
 
-    public function formulario_pedido(Request $request)  {
+    public function formulario_pedido(Request $request)
+    {
         $carrinho = Carrinho::find($request->carrinho_id);
 
         return view('User.Fisico.Pedido.formulario_pedido', compact('carrinho'));
     }
 
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
 
         $request->validate([
             'nome' => 'required|string',
@@ -56,7 +59,8 @@ class PedidoController extends Controller
         return redirect()->route('pedido.index');
     }
 
-    public function pedido(Request $request){
+    public function pedido(Request $request)
+    {
         $pedido = Pedido::find($request->id);
 
         return view('User.Fisico.Pedido.pedido', compact('pedido'));

@@ -18,8 +18,8 @@
                     <div class="col-2">
                         <form action="{{ route('roupa.deletar') }}" method="POST">
                             @csrf
-                            <input type="hidden" preco="{{ $produto->id }}" name="roupa_id">
-                            <button type="button" class="btn btn-danger">Deletar</button>
+                            <input type="hidden" value="{{ $produto->id }}" name="produto_id">
+                            <button type="submit" class="btn btn-danger">Deletar</button>
                         </form>
                     </div>
                     <div class="col-2">

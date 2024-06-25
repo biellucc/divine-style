@@ -55,11 +55,11 @@
                             </div>
 
                             <div class="col-md-5">
-                                <label for="validate" class="form-label">{{ __('Validade') }}</label>
-                                <input type="date" class="form-control  @error('validate') is-invalid @enderror"
-                                    id="validate" name="validate">
+                                <label for="validade" class="form-label">{{ __('Validade') }}</label>
+                                <input type="date" class="form-control  @error('validade') is-invalid @enderror"
+                                    id="validade" name="validade">
 
-                                @error('validate')
+                                @error('validade')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>
