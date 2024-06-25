@@ -32,7 +32,7 @@
                                 <tbody>
                                     <td>
                                         <div class="d-flex align-items-center">
-                                            <img src="/assets/imagem/{{ $roupa->image }}" alt="Imagem do Livro"
+                                            <img src="/img/roupas/{{ $roupa->imagem }}" alt="Imagem do produto"
                                                 style="padding-top: 10; border-radius:6px">
                                             <div class="d-flex">
                                                 <a class='link_product'
