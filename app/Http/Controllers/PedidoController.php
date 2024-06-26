@@ -10,6 +10,13 @@ use Illuminate\Support\Facades\Auth;
 class PedidoController extends Controller
 {
 
+    protected $carrinhoController;
+
+    public function __construct(CarrinhoController $carrinhoController)
+    {
+        $this->carrinhoController = $carrinhoController;
+    }
+
     public function index()
     {
         $fisico = Auth::user()->fisico;
@@ -21,14 +28,15 @@ class PedidoController extends Controller
 
     public function formulario_pedido(Request $request)
     {
-        $carrinho = Carrinho::find($request->carrinho_id);
+        $this->carrinhoController->adicionar($request);
+        $fisico = Auth::user()->fisico;
+        $carrinho = $fisico->carrinhos()->where('status', 1)->first();
 
         return view('User.Fisico.Pedido.formulario_pedido', compact('carrinho'));
     }
 
     public function store(Request $request)
     {
-
         $request->validate([
             'nome' => 'required|string',
             'sobrenome' => 'required|string',
@@ -36,14 +44,17 @@ class PedidoController extends Controller
             'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{3}$/',
             'pais' => 'required|string',
             'estado' => 'required|string',
+            'cidade' => 'required|string',
             'bairro' => 'required|string',
             'endereco' => 'required|string',
             'n_residencia' => 'required|string',
-            'cartao' => 'required|numeric'
+            'cartao' => 'required'
         ]);
 
         $carrinho = Carrinho::find($request->carrinho_id);
-        $fisico = $carrinho->fisico()->first();
+        $fisico = $carrinho->fisico();
+
+        dd($request);
 
         $pedido = Pedido::create([
             'valor' => $request->valor,

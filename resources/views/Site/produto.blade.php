@@ -20,9 +20,10 @@
                         </form>
                     </div>
                     <div class="col-6">
-                        <form action="{{ route('carrinho.add') }}" method="GET">
+                        <form action="{{ route('pedido.formulario_pedido') }}" method="GET">
                             @csrf
-                            <button type="submit" href="" class="btn btn-success">Comprar</button>
+                            <input type="hidden" value="{{ $produto->id }}" name="roupa_id">
+                            <button type="submit" class="btn btn-success">Comprar</button>
                         </form>
                     </div>
                 </div>
