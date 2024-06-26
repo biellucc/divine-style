@@ -41,31 +41,31 @@ Route::controller(LoginController::class)->group(function(){
 });
 
 Route::controller(CartaoController::class)->group(function(){
-    Route::get('/Cartao', 'index')->name('cartao.index');
-    Route::get('/Cartao-cadastrar-cartão', 'formulario')->name('cartao.formulario');
-    Route::post('/Cartão-cadastrar-cartão', 'store')->name('cartao.store');
-    Route::get('Cartao-gerenciamento-[$id]', 'controle')->name('cartao.controle');
-    Route::get('/Cartao-deletar-cartão', 'delete')->name('cartao.delete');
-    Route::get('/Cartao-atualizar-cartão', 'update')->name('cartao.update');
+    Route::get('/Cartao', 'index')->name('cartao.index')->middleware(['auth', 'checkFisico']);
+    Route::get('/Cartao-cadastrar-cartão', 'formulario')->name('cartao.formulario')->middleware(['auth', 'checkFisico']);
+    Route::post('/Cartão-cadastrar-cartão', 'store')->name('cartao.store')->middleware(['auth', 'checkFisico']);
+    Route::get('Cartao-gerenciamento-[$id]', 'controle')->name('cartao.controle')->middleware(['auth', 'checkFisico']);
+    Route::get('/Cartao-deletar-cartão', 'delete')->name('cartao.delete')->middleware(['auth', 'checkFisico']);
+    Route::get('/Cartao-atualizar-cartão', 'update')->name('cartao.update')->middleware(['auth', 'checkFisico']);
 });
 
 Route::controller(CarrinhoController::class)->group(function(){
-    Route::get('/Carrinho', 'index')->name('carrinho.index');
-    Route::get('/Carrinho-adicionar-produto', 'adicionar')->name('carrinho.add');
-    Route::get('/Carrinho-remover-produto', 'remover')->name('carrinho.remover');
+    Route::get('/Carrinho', 'index')->name('carrinho.index')->middleware(['auth', 'checkFisico']);
+    Route::get('/Carrinho-adicionar-produto', 'adicionar')->name('carrinho.add')->middleware(['auth', 'checkFisico']);
+    Route::get('/Carrinho-remover-produto', 'remover')->name('carrinho.remover')->middleware(['auth', 'checkFisico']);
 });
 
 Route::controller(PedidoController::class)->group(function(){
-    Route::get('/Lista-Pedidos', 'index')->name('pedido.index');
-    Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido');
-    Route::post('/Pedido-criar', 'store')->name('pedido.adicionar');
-    Route::get('/Pedido-[$id]', 'pedido')->name('pedido.pedido');
+    Route::get('/Lista-Pedidos', 'index')->name('pedido.index')->middleware(['auth', 'checkFisico']);
+    Route::get('/Pedido-formulario', 'formulario_pedido')->name('pedido.formulario_pedido')->middleware(['auth', 'checkFisico']);
+    Route::post('/Pedido-criar', 'store')->name('pedido.adicionar')->middleware(['auth', 'checkFisico']);
+    Route::get('/Pedido-[$id]', 'pedido')->name('pedido.pedido')->middleware(['auth', 'checkFisico']);
 });
 
 Route::controller(RoupaController::class)->group(function(){
-    Route::get('/Roupa-estoque', 'index')->name('roupa.index');
-    Route::get('/Roupa-[$id]', 'produto')->name('roupa.produto');
-    Route::post('/Roupa-store', 'store')->name('roupa.store');
-    Route::post('/Roupa-alterar', 'alterar')->name('roupa.alterar');
-    Route::post('/Roupa-deletar', 'deletar')->name('roupa.deletar');
+    Route::get('/Roupa-estoque', 'index')->name('roupa.index')->middleware(['auth', 'checkJuridico']);
+    Route::get('/Roupa-[$id]', 'produto')->name('roupa.produto')->middleware(['auth', 'checkJuridico']);
+    Route::post('/Roupa-store', 'store')->name('roupa.store')->middleware(['auth', 'checkJuridico']);
+    Route::post('/Roupa-alterar', 'alterar')->name('roupa.alterar')->middleware(['auth', 'checkJuridico']);
+    Route::post('/Roupa-deletar', 'deletar')->name('roupa.deletar')->middleware(['auth', 'checkJuridico']);
 });
