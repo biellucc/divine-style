@@ -56,11 +56,20 @@
                             </div>
 
 
-                            <div class="col-12">
+                            <div class="col-8">
                                 <label for="email" class="form-label">Email</label>
                                 <input type="email" class="form-control" id="email" name="email" placeholder=""
                                     value="{{ $carrinho->fisico->usuario?->email }}">
                                     @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="col-4">
+                                <label for="telefone" class="form-label">Telefone</label>
+                                <input type="text" class="form-control" id="telefone" name="telefone" placeholder=""
+                                    value="{{ $carrinho->fisico->usuario?->telefone }}">
+                                    @error('telefone')
                                     <div class="invalid-feedback">{{ $message }}</div>
                                 @enderror
                             </div>
@@ -110,7 +119,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-8">
+                            <div class="col-9">
                                 <label for="endereco" class="form-label">Endereço</label>
                                 <input type="text" class="form-control" id="endereco" name="endereco"
                                     placeholder="" value="{{ $carrinho->fisico->usuario->endereco?->endereco }}">
@@ -119,7 +128,7 @@
                                 @enderror
                             </div>
 
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label for="n_residencia" class="form-label">Número da casa</label>
                                 <input type="number" class="form-control" id="n_residencia" name="n_residencia"
                                     placeholder="" value="{{ $carrinho->fisico->usuario->endereco?->n_residencia }}">

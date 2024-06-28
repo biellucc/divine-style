@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Carrinho;
+use App\Models\Endereco;
 use App\Models\Pedido;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -41,7 +43,8 @@ class PedidoController extends Controller
             'nome' => 'required|string',
             'sobrenome' => 'required|string',
             'email' => 'required|email',
-            'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{3}$/',
+            'telefone' => 'required|string',
+            'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{4}$/',
             'pais' => 'required|string',
             'estado' => 'required|string',
             'cidade' => 'required|string',
@@ -52,9 +55,7 @@ class PedidoController extends Controller
         ]);
 
         $carrinho = Carrinho::find($request->carrinho_id);
-        $fisico = $carrinho->fisico();
-
-        dd($request);
+        $fisico = Auth::user()->fisico;
 
         $pedido = Pedido::create([
             'valor' => $request->valor,
@@ -67,7 +68,27 @@ class PedidoController extends Controller
         $carrinho->status = 0;
         $carrinho->save();
 
-        return redirect()->route('pedido.index');
+        $endereco = Endereco::find($fisico->usuario_id);
+        $enderecoInput = $request->only(['cep', 'pais','estado', 'cidade', 'bairro', 'endereco', 'n_residencia']);
+        foreach($enderecoInput as $key => $value){
+            $endereco->$key = $value;
+        }
+        $endereco->save();
+
+        $fisicoInput = $request->only(['nome', 'sobrenome']);
+        foreach($fisicoInput as $key => $value){
+            $fisico->$key = $value;
+        }
+        $fisico->save();
+
+        $usuario = User::find($fisico->usuario_id);
+        $usuarioInput = $request->only(['email', 'telefone']);
+        foreach($usuarioInput as $key => $value){
+            $usuario->$key = $value;
+        }
+        $usuario->save();
+
+        return redirect()->route('pedido.pedido', $pedido->id);
     }
 
     public function pedido(Request $request)

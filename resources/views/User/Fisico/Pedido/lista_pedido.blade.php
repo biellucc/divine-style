@@ -3,9 +3,9 @@
 @section('conteudo')
 
     @if ($pedidos->isNotEmpty())
-    <div class="d-flex justify-content-center mt-4">
-        <h1 class="">Meus Pedidos</h1>
-    </div>
+        <div class="d-flex justify-content-center mt-4">
+            <h1 class="">Meus Pedidos</h1>
+        </div>
 
         <div class="container d-flex justify-content-center" style="min-height: 100vh;">
             <div id="produtos-container" class="col-md-12 text-center">
@@ -15,16 +15,8 @@
                             <div class="card-body">
                                 <p class="card-text"><strong>Status: </strong>{{ $pedido->status }}</p>
                                 <p class="card-text"><strong>Valor: </strong>{{ $pedido->valor }}</p>
-                                <div class="row">
-                                    <div class="col-5">
-                                        <a href="{{ route('site.produto', ['id' => $pedido->id]) }}"
-                                            class="btn btn-warning">{{ __('Produto') }}</a>
-                                    </div>
-                                    <div class="col-4">
-                                        <a href="{{ route('pedido.pedido', ['id' => $pedido->id]) }}" class="btn btn-success">{{ __('Pedido') }}</a>
-                                    </div>
-                                </div>
-
+                                <a href="{{ route('pedido.pedido', ['id' => $pedido->id]) }}"
+                                    class="btn btn-warning">{{ __('Pedido') }}</a>
                             </div>
                         </div>
                     @endforeach
