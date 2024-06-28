@@ -17,14 +17,14 @@
             <div class="container mt-2">
                 <div class="row">
 
-                    <div class="col-md-5">
+                    <div class="col-md-8">
                         <table class="table">
 
                             <thead>
                                 <tr>
                                     <td>Produto</td>
                                     <td>Preço</td>
-                                    <td></td>
+                                    <td>Remover</td>
                                 </tr>
                             </thead>
 
@@ -35,20 +35,18 @@
                                             <img src="/img/roupas/{{ $roupa->imagem }}" alt="Imagem do produto"
                                                 style="padding-top: 10; border-radius:6px">
                                             <div class="d-flex">
-                                                <a class='link_product'
-                                                    href="">{{ $roupa->tipo }}</a>
+                                                <a class='link_product' href="{{ route('site.produto', ['id' => $roupa->id]) }}">{{ $roupa->tipo }}</a>
                                             </div>
                                         </div>
 
                                     </td>
                                     <td>{{ $roupa->preco }}</td>
                                     <td>
-                                        <form action="" method="POST">
+                                        <form action="{{ route('carrinho.remover') }}" method="GET">
                                             @csrf
-                                            <input type="hidden" name='carrinho_id' value="{{ $carrinho->id }}">
                                             <input type="hidden" name='roupa_id' value="{{ $roupa->id }}">
                                             <button type="submit" style="background-color: transparent; border:none"><i
-                                                    class='bx bx-x'></i></button>
+                                                    class='bx bx-x'></i>Remover</button>
                                         </form>
 
                                     </td>

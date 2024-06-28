@@ -30,7 +30,8 @@ class CarrinhoController extends Controller
 
     public function remover(Request $request)
     {
-        $carrinho = Carrinho::find($request->carrinho_id);
+        $fisico = Auth::user()->fisico;
+        $carrinho = Carrinho::where('fisico_id', $fisico->id)->where('status', 1)->first();
         $carrinho->roupas()->detach($request->roupa_id);
 
         return redirect()->back();

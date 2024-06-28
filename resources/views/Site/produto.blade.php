@@ -12,12 +12,21 @@
 
                 <div class="row mt-2">
                     <div class="col-6">
-                        <form action="{{ route('carrinho.add') }}" method="GET">
-                            @csrf
-                            <input type="hidden" value="{{ $produto->id }}" name="roupa_id">
-                            <button type="submit" class="btn btn-warning">Adicionar ao
-                                carrinho</button>
-                        </form>
+                        @if ($temNoCarrinho == null)
+                            <form action="{{ route('carrinho.add') }}" method="GET">
+                                @csrf
+                                <input type="hidden" value="{{ $produto->id }}" name="roupa_id">
+                                <button type="submit" class="btn btn-warning">Adicionar ao
+                                    carrinho</button>
+                            </form>
+                        @else
+                            <form action="{{ route('carrinho.remover') }}" method="GET">
+                                @csrf
+                                <input type="hidden" value="{{ $produto->id }}" name="roupa_id">
+                                <button type="submit" class="btn btn-danger">Remover do
+                                    carrinho</button>
+                            </form>
+                        @endif
                     </div>
                     <div class="col-6">
                         <form action="{{ route('pedido.formulario_pedido') }}" method="GET">
