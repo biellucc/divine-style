@@ -35,6 +35,7 @@
                     <p><span>Cor: {{ $produto?->cor }}</span></p>
                     <p><span>Tamanho: {{ $produto?->tamanho }}</span></p>
                     <p><span>Preço: {{ $produto?->preco }}</span></p>
+                    <p><span>Estoque: {{ $produto?->estoque }}</span></p>
                 </div>
                 <div class="mt-2">
                     <h4>{{ _('Descrição') }}</h4>

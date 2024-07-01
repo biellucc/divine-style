@@ -21,7 +21,7 @@
                             <div class="card-body">
                                 <p class="card-title"><strong>Tipo: </strong>{{ $roupa->tipo }}</p>
                                 <p class="card-text"><strong>Valor: </strong>{{ $roupa->preco }}</p>
-                                <p class="card-text"><strong>Estoque: </strong>{{ $roupa->quantidade }}</p>
+                                <p class="card-text"><strong>Estoque: </strong>{{ $roupa->estoque }}</p>
                                 <a href="{{ route('roupa.produto', ['id' => $roupa->id]) }}" class="btn bg-warning">Saber
                                     mais</a>
                             </div>
@@ -103,8 +103,19 @@
                         <div class="mb-3">
                             <label for="preco" class="form-label">{{ __('Preço') }}</label>
                             <input type="number" step="any" class="form-control  @error('preco') is-invalid @enderror"
-                                id="number_wallet" id="preco" name="preco" placeholder="100,89" min="1">
+                                id="preco" name="preco" placeholder="100,89" min="1">
                             @error('preco')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="estoque" class="form-label">{{ __('Estoque') }}</label>
+                            <input type="number" step="any" class="form-control  @error('estoque') is-invalid @enderror"
+                                id="estoque" name="estoque" placeholder="10" min="1">
+                            @error('estoque')
                                 <div class="invalid-feedback">
                                     {{ $message }}
                                 </div>

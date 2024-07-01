@@ -28,6 +28,7 @@ class RoupaController extends Controller
     {
         $request->validate([
             'tipo' => 'required', 'string', 'max:99',
+            'estoque' => 'required|integer|min:1',
             'tamanho' => 'required', 'string', 'max:3',
             'cor' => 'required', 'string', 'max:20',
             'descricao' => 'required', 'string',
@@ -45,6 +46,7 @@ class RoupaController extends Controller
             'cor' => $request->cor,
             'descricao' => $request->descricao,
             'preco' => $request->preco,
+            'estoque' => $request->estoque,
             'imagem' => $imagemNome,
             'status' => 1
         ]);
@@ -68,6 +70,7 @@ class RoupaController extends Controller
             'tamanho' => 'required', 'string', 'max:3',
             'cor' => 'required', 'string', 'max:20',
             'descricao' => 'required', 'string',
+            'estoque' => 'required|integer',
             'preco' => 'required', 'numeric', 'between:1,9999',
             'imagem' => 'required', 'image', 'mimes:jpg, jpeg, png'
         ]);

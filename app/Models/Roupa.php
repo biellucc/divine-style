@@ -19,6 +19,7 @@ class Roupa extends Model
         'descricao',
         'preco',
         'status',
+        'estoque',
         'imagem',
         'juridico_id'
     ];
@@ -29,6 +30,7 @@ class Roupa extends Model
 
     protected $casts = [
         'preco' => 'decimal:2',
+        'estoque' => 'integer',
         'status' => 'boolean'
     ];
 
