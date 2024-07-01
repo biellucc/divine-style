@@ -88,13 +88,14 @@ class PedidoController extends Controller
         }
         $usuario->save();
 
-        return redirect()->route('pedido.pedido', $pedido->id);
+        return redirect()->route('pedido.pedido', ['id' => $pedido->id]);
     }
 
     public function pedido(Request $request)
     {
         $pedido = Pedido::find($request->id);
+        $carrinho = Carrinho::find($pedido->carrinho_id);
 
-        return view('User.Fisico.Pedido.pedido', compact('pedido'));
+        return view('User.Fisico.Pedido.pedido', compact('pedido', 'carrinho'));
     }
 }
