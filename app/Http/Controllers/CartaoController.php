@@ -32,7 +32,7 @@ class CartaoController extends Controller
         $request->validate([
             'numero' => 'required|string|regex:/^[0-9]{4}.[0-9]{4}.[0-9]{4}.[0-9]{4}$/',
             'cvc' => 'required|string|regex:/^[0-9]{3,4}$/',
-            //'validade' => 'required|before_or_equal:'. Carbon::now()->subMonth(1)->format('y-m-d')
+            'validade' => 'required|after_or_equal:'. Carbon::now()->addMonth(1)->format('y-m-d')
         ]);
 
         $fisico = Auth::user()->fisico;

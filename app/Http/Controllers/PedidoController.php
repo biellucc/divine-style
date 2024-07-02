@@ -44,7 +44,7 @@ class PedidoController extends Controller
             'sobrenome' => 'required|string',
             'email' => 'required|email',
             'telefone' => 'required|string',
-            'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{4}$/',
+            'cep' => 'required|string|regex: /^[0-9]{5}-[0-9]{3,4}$/',
             'pais' => 'required|string',
             'estado' => 'required|string',
             'cidade' => 'required|string',
@@ -53,7 +53,6 @@ class PedidoController extends Controller
             'n_residencia' => 'required|string',
             'cartao' => 'required'
         ]);
-
         $carrinho = Carrinho::find($request->carrinho_id);
         $fisico = Auth::user()->fisico;
 
